@@ -1,0 +1,174 @@
+@CHARSET "ISO-8859-1";
+
+@font-face {
+	font-family: 'normal';
+	src: url("../fonts/GeosansLight.ttf") format("truetype");
+}
+
+sub {
+vertical-align: sub;
+font-size: smaller;
+}
+
+body {
+	width:auto;
+	min-width:800px;
+	background-color: black;
+	font-family: 'normal', Sergoe UI, Century Gothic, sans-serif;
+	color:white;
+	overflow:auto;
+	
+}
+
+header {
+	height:50px;
+	width:100%;
+    text-align:right;
+}
+
+div.main {
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+
+aside {
+	display:inline-block;
+	vertical-align:middle;
+}
+	
+a {
+	text-decoration:none;
+	color:inherit;
+}
+
+div.appName {
+	padding:10px;
+	vertical-align:middle;
+	float:left;
+	font-size:30px;
+}
+
+div.icon {
+	height:30px;
+	width:30px;
+	padding:10px;
+	display:inline-block;
+	vertical-align:middle;
+	text-align:center;
+}
+
+aside.left {
+	width:280px;
+	margin-right:10px;
+	text-align:right;
+}
+
+aside.right {
+	width:60%;
+	min-width:500px;
+	text-align:left;
+}
+
+div.fileManagerBand {
+	background-color:#00B7EB;
+	height:50px;
+	width:100%;
+}
+
+p.address {
+	height:50px;
+	line-height:50px;
+	padding-left:20px;
+	border-left:solid 1px white;
+	background-image:url("../img/spinner.png");
+    background-repeat:no-repeat;
+    background-position:bottom left;
+}
+
+section {
+    background-color:#333333;
+    margin-top:10px;
+    vertical-align:middle;
+	text-align:center;
+}
+
+section.filters {
+	height:410px;
+}
+
+section.export {
+	height:50px;
+	line-height:50px;
+}
+
+section.player {
+	height:100px;
+	line-height:100px;
+}
+
+section.spectrum {
+	height:200px;
+	line-height:200px;
+}
+
+section.platine {
+	height:150px;
+	line-height:150px;
+}
+
+div.filterType, div.filterNoise {
+	padding:10px;
+	margin-bottom:5px;
+	text-align:center;
+}
+
+div.filterNoise, span.choiceLeft {
+	text-align:right;
+}
+
+span.choiceRight {
+	text-align:left;
+}
+
+p.filterTitle {
+	text-align:right;
+	border-bottom:1px solid #cccccc;
+}
+
+div.singleFilter, div.doubleFilter {
+	margin:5px;
+	margin-top:10px;
+	width:250px;
+}
+
+span.choiceLeft, span.choiceRight, span.switchTwin, span.switchSingle {
+	width:35%;
+	vertical-align:middle;
+	display:inline-block;
+}
+
+span.switchTwin, span.switchSingle {
+	width:50px;
+}
+
+div.frequencyRange {
+	width:100%;
+	text-align:left;
+	vertical-align:middle;
+	display:inline-block;
+}
+
+span.smallerToRight {
+	font-size:small;
+	float:right;
+	vertical-align:middle;
+	display:inline-block;
+}
+
+div.output {
+	width:40px;
+	text-align:right;
+	vertical-align:middle;
+	display:inline-block;
+}

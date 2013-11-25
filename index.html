@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sonolyzer</title>
+        <link href="css/reset.css" rel="stylesheet" media="screen">
+        <link href="css/template.css" rel="stylesheet" media="screen">
+        <link href="css/components.css" rel="stylesheet" media="screen">
+        
+    </head>
+    <body>
+        <header>
+            <div class="appName">
+                <h1><a href="/sonolyzer/index.aspx"> Sonolyzer </a></h1>
+            </div>
+            
+            <div class="actions">
+                <a href="#"><div class="icon">
+                    <img src="img/help.png" />
+                </div></a>
+                <a href="#"><div class="icon">
+                    <img src="img/settings.png" />
+                </div></a>
+            </div>
+        </header>
+
+		<div class="main">
+            <div class="fileManagerBand">
+                <aside class="left">
+                    <div class="icon">
+                        <form id="searchFile">
+                            <input type="search" placeholder="Search">
+                        </form>
+                    </div>
+                    <a href="#"><div class="icon">
+                        <img src="img/reload.png" />
+                    </div></a>
+                </aside>
+                <aside class="right">
+                    <a href="#"><p class="address">Test d'adresse</p></a>
+                </aside>
+            </div>
+
+			<div class="panels">
+                <aside class="left">
+                    <section class="filters">
+                        <div class="filterType">
+                            <p class="filterTitle">VOIX</p>
+                            <div class="doubleFilter">
+                            	<span class="choiceLeft">
+                                	Intensifier
+                                </span>
+                                <span class="switchTwin">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="voiceLevel" class="onoffswitch-checkbox" id="voiceLevel">
+                                        <label class="onoffswitch-label" for="voiceLevel">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                                <span class="choiceRight">
+                                	R&eacute;duire
+                                </span>
+                            </div>
+                            <div class="doubleFilter">
+                            	<span class="choiceLeft">
+                                	Aigues
+                                </span>
+                                <span class="switchTwin">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="voiceType" class="onoffswitch-checkbox" id="voiceType">
+                                        <label class="onoffswitch-label" for="voiceType">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                                <span class="choiceRight">
+                                	Graves
+                                </span>
+                            </div>
+                        </div>
+                        <div class="filterNoise">
+                            <p class="filterTitle">REDUCTION BRUITS</p>
+                            <div class="singleFilter">
+                            	<span class="label">
+                                	Interf&eacute;rences
+                                </span>
+                                <span class="switchSingle">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="interference" class="onoffswitch-checkbox" id="interference">
+                                        <label class="onoffswitch-label" for="interference">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="singleFilter">
+                            	<span class="label">
+                                	Circulation
+                                </span>
+                                <span class="switchSingle">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="road" class="onoffswitch-checkbox" id="road">
+                                        <label class="onoffswitch-label" for="road">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="singleFilter">
+                            	<span class="label">
+                                	&Eacute;cho
+                                </span>
+                                <span class="switchSingle">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="echo" class="onoffswitch-checkbox" id="echo">
+                                        <label class="onoffswitch-label" for="echo">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="filterType">
+                            <p class="filterTitle">PERSONNALISES</p>
+                            <div class="doubleFilter">
+                                <span class="choiceLeft">
+                                    Passe-haut
+                                </span>
+                                <span class="switchTwin">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="passeFilter" class="onoffswitch-checkbox" id="passeFilter">
+                                        <label class="onoffswitch-label" for="passeFilter">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                                <span class="choiceRight">
+                                    Passe-bas
+                                </span>
+                            </div>
+                            <div class="frequencyRange">
+                                <form oninput="amount.value=rangePass.value">
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="24000" step="10">
+                                    <span class="smallerToRight">
+                                    	f<sub>C</sub> = 
+                                        <div class="output">
+                                        	<output name="amount" for="rangePass">?</output>
+                                        </div>
+                                        kHz
+                                    </span>
+                                </form>
+                            </div>
+                            <div class="doubleFilter">
+                                <span class="choiceLeft">
+                                    Passe-bande
+                                </span>
+                                <span class="switchTwin">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="bandeFilter" class="onoffswitch-checkbox" id="bandeFilter">
+                                        <label class="onoffswitch-label" for="bandeFilter">
+                                            <div class="onoffswitch-inner"></div>
+                                            <div class="onoffswitch-switch"></div>
+                                        </label>
+                                    </div>
+                                </span>
+                                <span class="choiceRight">
+                                    Coupe-bande
+                                </span>
+                            </div>
+                            <div class="frequencyRange">
+                                <form oninput="amount.value=rangeLowBand.value">
+                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="24000" step="10">
+                                    <span class="smallerToRight">
+                                    	f<sub>Cb</sub> = 
+                                        <div class="output">
+                                        	<output name="amount" for="rangeLowBand">?</output>
+                                        </div>
+                                        kHz
+                                    </span>
+                                </form>
+                            </div>
+                            <div class="frequencyRange">
+                                <form oninput="amount.value=rangeHighBand.value">
+                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="24000" step="10">
+                                    <span class="smallerToRight">
+                                    	f<sub>Ch</sub> = 
+                                        <div class="output">
+                                        	<output name="amount" for="rangeHighBand">?</output>
+                                        </div>
+                                        kHz
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="export">
+                        <a href="#"><p>
+                            EXPORT
+                        </p></a>
+                    </section>
+                </aside>
+                
+                <aside class="right">
+                    <section class="player">
+                        <p>
+                        	Player
+                        </p>
+                    </section>
+                    
+                    <section class="spectrum">
+                        <p>
+                        	Spectre
+                        </p>
+                    </section>
+                    
+                    <section class="platine">
+                        <p>
+                        	Platine
+                        </p>
+                        <div class="switch">
+                            <input type="radio" class="radioSwitch" name="view" value="off" id="off" checked>
+                            <label for="off" class="switch-label switch-label-left">&nbsp;</label>
+                            <input type="radio" class="radioSwitch" name="view" value="right" id="right">
+                            <label for="right" class="switch-label switch-label-right">&nbsp;</label>
+                            <span class="switch-selection"></span>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+		</div>
+
+		<footer>
+			<!-- Contenu du footer -->
+		</footer>
+	</body>
+</html>
