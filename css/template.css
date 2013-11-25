@@ -42,6 +42,12 @@ a {
 	color:inherit;
 }
 
+h3 {
+	border-bottom:1px solid white;
+	text-transform:uppercase;
+}
+	
+
 div.appName {
 	padding:10px;
 	vertical-align:middle;
@@ -71,7 +77,7 @@ aside.right {
 }
 
 div.fileManagerBand {
-	background-color:#00B7EB;
+	background-color:DeepSkyBlue;
 	height:50px;
 	width:100%;
 }
@@ -131,9 +137,8 @@ span.choiceRight {
 	text-align:left;
 }
 
-p.filterTitle {
+h3.filterTitle {
 	text-align:right;
-	border-bottom:1px solid #cccccc;
 }
 
 div.singleFilter, div.doubleFilter {

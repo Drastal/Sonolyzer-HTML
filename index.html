@@ -6,21 +6,63 @@
         <link href="css/reset.css" rel="stylesheet" media="screen">
         <link href="css/template.css" rel="stylesheet" media="screen">
         <link href="css/components.css" rel="stylesheet" media="screen">
+        <link href="css/modals.css" rel="stylesheet" media="screen">
         
     </head>
     <body>
         <header>
             <div class="appName">
-                <h1><a href="/sonolyzer/index.aspx"> Sonolyzer </a></h1>
+                <h1><a href="index.html"> Sonolyzer </a></h1>
             </div>
             
             <div class="actions">
-                <a href="#"><div class="icon">
+                <a href="#help"><div class="icon">
                     <img src="img/help.png" />
                 </div></a>
-                <a href="#"><div class="icon">
+                <div id="help" class="modal">
+                    <div class="popup">
+                        <div class="header">
+                                <h2>Aide</h2>
+                        </div>
+                        <div class="content">
+                            <h3>&Agrave; propos</h3>
+                            <p>Va falloir une fine plume les gens</p>
+                            <h3>Charger une bande sonore</h3>
+                            <p>Ici aussi, de toute évidence</p>
+                            <h3>Lecteur audio</h3>
+                            <p>Vous connaissez la chanson</p>
+                            <h3>Filtres</h3>
+                            <p>On r'met &ccedil;a ?</p>
+                            <h3>Export</h3>
+                            <p>Une autre patron</p>
+                        </div>
+                        <div class="footer">
+                            <a href="#" class="closeButton">Fermer</a>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+    			</div>
+                
+                <a href="#settings"><div class="icon">
                     <img src="img/settings.png" />
                 </div></a>
+                <div id="settings" class="modal">
+                    <div class="popup">
+                        <div class="header">
+                            <h2>Param&egrave;tres</h2>
+                        </div>
+                        <div class="content">
+                            <h3>G&eacute;n&eacute;rales</h3>
+                            <p>Couleur, etc...</p>
+                            <h3>Fitres</h3>
+                            <p>Que met-on ?</p>
+                        </div>
+                        <div class="footer">
+                            <a href="#" class="closeButton">Fermer</a>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+        		</div>
             </div>
         </header>
 
@@ -45,7 +87,7 @@
                 <aside class="left">
                     <section class="filters">
                         <div class="filterType">
-                            <p class="filterTitle">VOIX</p>
+                            <h3 class="filterTitle">Voix</h3>
                             <div class="doubleFilter">
                             	<span class="choiceLeft">
                                 	Intensifier
@@ -82,7 +124,7 @@
                             </div>
                         </div>
                         <div class="filterNoise">
-                            <p class="filterTitle">REDUCTION BRUITS</p>
+                            <h3 class="filterTitle">R&eacute;duction de bruit</h3>
                             <div class="singleFilter">
                             	<span class="label">
                                 	Interf&eacute;rences
@@ -127,7 +169,7 @@
                             </div>
                         </div>
                         <div class="filterType">
-                            <p class="filterTitle">PERSONNALISES</p>
+                            <h3 class="filterTitle">Personnalis&eacute;s</h3>
                             <div class="doubleFilter">
                                 <span class="choiceLeft">
                                     Passe-haut
@@ -224,13 +266,6 @@
                         <p>
                         	Platine
                         </p>
-                        <div class="switch">
-                            <input type="radio" class="radioSwitch" name="view" value="off" id="off" checked>
-                            <label for="off" class="switch-label switch-label-left">&nbsp;</label>
-                            <input type="radio" class="radioSwitch" name="view" value="right" id="right">
-                            <label for="right" class="switch-label switch-label-right">&nbsp;</label>
-                            <span class="switch-selection"></span>
-                        </div>
                     </section>
                 </aside>
             </div>
