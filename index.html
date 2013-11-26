@@ -94,6 +94,10 @@
                                 <span class="choiceRight">
                                 	R&eacute;duire
                                 </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <label for="activeLevel"></label>
+                                </span>
                             </div>
                             <div class="doubleFilter">
                             	<span class="choiceLeft">
@@ -111,52 +115,26 @@
                                 <span class="choiceRight">
                                 	Graves
                                 </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <label for="activeType"></label>
+                                </span>
                             </div>
                         </div>
                         <div class="filterNoise">
                             <h3 class="filterTitle">R&eacute;duction de bruit</h3>
                             <div class="singleFilter">
                             	<span class="label">
-                                	Interf&eacute;rences
+                                	Interf&eacute;rences GSM
                                 </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="interference" class="onoffswitch-checkbox" id="interference">
-                                        <label class="onoffswitch-label" for="interference">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
+                                <span class="checkBox">
+                                    <span class="activeFilter">
+                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" />
+                                        <label for="activeGSM"></label>
+                                    </span>
                                 </span>
                             </div>
-                            <div class="singleFilter">
-                            	<span class="label">
-                                	Circulation
-                                </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="road" class="onoffswitch-checkbox" id="road">
-                                        <label class="onoffswitch-label" for="road">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </div>
-                            <div class="singleFilter">
-                            	<span class="label">
-                                	&Eacute;cho
-                                </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="echo" class="onoffswitch-checkbox" id="echo">
-                                        <label class="onoffswitch-label" for="echo">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </div>
+                            
                         </div>
                         <div class="filterType">
                             <h3 class="filterTitle">Personnalis&eacute;s</h3>
@@ -175,6 +153,10 @@
                                 </span>
                                 <span class="choiceRight">
                                     Passe-bas
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <label for="activePass"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
@@ -204,6 +186,10 @@
                                 </span>
                                 <span class="choiceRight">
                                     Coupe-bande
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <label for="activeBand"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
@@ -264,5 +250,8 @@
 		<footer>
 			<!-- Contenu du footer -->
 		</footer>
+        
+        <!-- Scripts JavaScript -->
+        <script type="text/javascript" src="js/checkboxChecker.js"></script>
 	</body>
 </html>

@@ -2,22 +2,22 @@
 
 @font-face {
 	font-family: 'normal';
-	src: url("../fonts/GeosansLight.ttf") format("truetype");
+	src: url("../fonts/eurof55.ttf") format("truetype");
 }
 
 sub {
-vertical-align: sub;
-font-size: smaller;
+	vertical-align: sub;
+	font-size: smaller;
 }
 
 body {
 	width:auto;
 	min-width:800px;
 	background-color: black;
-	font-family: 'normal', Sergoe UI, Century Gothic, sans-serif;
+	font-family: 'normal', Century Gothic, sans-serif;
+	font-size:medium;
 	color:white;
 	overflow:auto;
-	
 }
 
 header {
@@ -34,7 +34,7 @@ div.main {
 
 aside {
 	display:inline-block;
-	vertical-align:middle;
+	vertical-align:top;
 }
 	
 a {
@@ -68,6 +68,10 @@ div.appName {
 	border:2px solid white;
 	-webkit-transition: all .5s;
 	-moz-transition: all .5s;
+}
+
+form.icon {
+	border:none;
 }
 
 a.icon:hover {
@@ -109,12 +113,7 @@ p.address {
 section {
     background-color:#333333;
     margin-top:10px;
-    vertical-align:middle;
 	text-align:center;
-}
-
-section.filters {
-	height:410px;
 }
 
 section.export {
@@ -123,7 +122,7 @@ section.export {
 }
 
 section.player {
-	height:100px;
+	min-height:100px;
 	line-height:100px;
 }
 
@@ -156,19 +155,23 @@ h3.filterTitle {
 }
 
 div.singleFilter, div.doubleFilter {
-	margin:5px;
-	margin-top:10px;
-	width:250px;
+	padding:10px 0px;
+	width:100%;
+	border-top:1px solid #666;
 }
 
-span.choiceLeft, span.choiceRight, span.switchTwin, span.switchSingle {
+span.choiceLeft, span.choiceRight, span.switchTwin, span.checkBox {
 	width:35%;
 	vertical-align:middle;
 	display:inline-block;
 }
 
-span.switchTwin, span.switchSingle {
-	width:50px;
+span.switchTwin, span.checkBox {
+	width:40px;
+}
+
+span.checkBox {
+	margin-right:5px;
 }
 
 div.frequencyRange {
@@ -176,6 +179,7 @@ div.frequencyRange {
 	text-align:left;
 	vertical-align:middle;
 	display:inline-block;
+	margin-bottom:10px;
 }
 
 span.smallerToRight {
