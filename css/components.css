@@ -21,7 +21,7 @@ input::-webkit-search-cancel-button {
 
 input[type=search] {
 	background: url(../img/search.png) no-repeat right;
-	padding: 5px 8px;
+	padding: 5px 9px;
 	-webkit-border-radius: 16px;
 	-moz-border-radius: 16px;
 	border-radius: 16px;
@@ -44,10 +44,11 @@ input::-webkit-input-placeholder {
 
 input[type=search]:hover {
 	width: 180px;
-	background-color: black;
 	padding-right: 32px;
-	color: white;
+	color: DeepSkyBlue;
 	cursor: auto;
+	background: url(../img/search-blue.png) no-repeat right;
+	background-color: white;
 }
 
 
