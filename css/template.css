@@ -131,6 +131,7 @@ section.player {
 section.spectrum {
 	height:325px;
 	line-height:325px;
+        padding:20px;
 }
 
 section.platine {
