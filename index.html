@@ -7,6 +7,7 @@
         <link href="css/template.css" rel="stylesheet" media="screen">
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen">
+        <link href="css/player.css" rel="stylesheet" media="screen">
         
     </head>
     <body>
@@ -83,11 +84,11 @@
                                 	Intensifier
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="voiceLevel" class="onoffswitch-checkbox" id="voiceLevel">
-                                        <label class="onoffswitch-label" for="voiceLevel">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel">
+                                        <label class="switch-label" for="voiceLevel">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
@@ -104,11 +105,11 @@
                                 	Aigues
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="voiceType" class="onoffswitch-checkbox" id="voiceType">
-                                        <label class="onoffswitch-label" for="voiceType">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType">
+                                        <label class="switch-label" for="voiceType">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
@@ -143,11 +144,11 @@
                                     Passe-haut
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="passeFilter" class="onoffswitch-checkbox" id="passeFilter">
-                                        <label class="onoffswitch-label" for="passeFilter">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter">
+                                        <label class="switch-label" for="passeFilter">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
@@ -176,11 +177,11 @@
                                     Passe-bande
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="bandeFilter" class="onoffswitch-checkbox" id="bandeFilter">
-                                        <label class="onoffswitch-label" for="bandeFilter">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter">
+                                        <label class="switch-label" for="bandeFilter">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
@@ -227,7 +228,23 @@
                 
                 <aside class="right">
                     <section class="player">
-                    	<audio preload="auto" src="http://broadcast.infomaniak.net:80/alouette-high.mp3" controls loop></audio>
+                        <span class="controls">
+                            <div class="play">
+                                <input type="checkbox" value="None" id="play" name="play" onChange="playPause('song')" />
+                                <label for="play"></label>
+                            </div>
+                            <div class="volumeControl">
+                                <span class="volumeDown" onclick="changeVolume(10, 'down')">Vol -</span>
+                                <span class="volumeMeter" onclick="setNewVolume(this,event)"></span>
+                                <span class="volumeUp" onclick="changeVolume(10, 'up')">vol +</span>
+                            </div>
+                        </span>
+                        <span class="songSlider" onclick="setSongPosition(this,event)"></span>
+                        <span class="songTimer"></span>
+                    	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
+                        	<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">
+                            <source type="audio/ogg" src="song/son2.ogg">
+                        </audio>
                     </section>
                     
                     <section class="spectrum">
@@ -251,5 +268,6 @@
         
         <!-- Scripts JavaScript -->
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
+        <script type="text/javascript" src="js/playerControls.js"></script>
 	</body>
 </html>

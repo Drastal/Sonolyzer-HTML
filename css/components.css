@@ -54,7 +54,7 @@ input[type=search]:hover {
 
 
 /* Switch ON/OFF */
-.onoffswitch {
+.switch {
     position: relative;
 	width: 35px;
     -webkit-user-select:none;
@@ -63,18 +63,18 @@ input[type=search]:hover {
 	display:inline-block;
 }
 
-.onoffswitch-checkbox {
+.switch-checkbox {
     display: none;
 }
 
-.onoffswitch-label {
+.switch-label {
     display: block;
 	overflow: hidden;
 	cursor: pointer;
     border: 2px solid transparent;
 }
 
-.onoffswitch-inner {
+.switch-inner {
     width: 200%;
 	margin-left: -100%;
     -moz-transition: margin 0.3s ease-in 0s;
@@ -83,7 +83,7 @@ input[type=search]:hover {
 	transition: margin 0.3s ease-in 0s;
 }
 
-.onoffswitch-inner:before, .onoffswitch-inner:after {
+.switch-inner:before, .switch-inner:after {
     float: left;
 	width: 50%;
 	height: 8px;
@@ -93,20 +93,20 @@ input[type=search]:hover {
     background-clip: padding-box;
 }
 
-.onoffswitch-inner:before {
+.switch-inner:before {
     content: "";
     padding-left: 10px;
     background-color: #F0F;
 }
 
-.onoffswitch-inner:after {
+.switch-inner:after {
     content: "";
     padding-right: 10px;
     background-color: #F80;
     text-align: right;
 }
 
-.onoffswitch-switch {
+.switch-switch {
     width: 5px;
 	margin: 0px;
     background: white;
@@ -120,11 +120,11 @@ input[type=search]:hover {
 	transition: all 0.3s ease-in 0s; 
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+.switch-checkbox:checked + .switch-label .switch-inner {
     margin-left: 0;
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+.switch-checkbox:checked + .switch-label .switch-switch {
     right: 0px; 
 }
 

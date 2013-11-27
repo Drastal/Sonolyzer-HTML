@@ -125,6 +125,7 @@ section.export {
 section.player {
 	min-height:100px;
 	line-height:100px;
+	position:relative;
 }
 
 section.spectrum {
