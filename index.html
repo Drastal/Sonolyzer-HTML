@@ -234,13 +234,13 @@
                                 <label for="play"></label>
                             </div>
                             <div class="volumeControl">
-                                <span class="volumeDown" onclick="changeVolume(10, 'down')">Vol -</span>
+                                <span class="volumeDown" onclick="changeVolume(10, 'down')"></span>
                                 <span class="volumeMeter" onclick="setNewVolume(this,event)"></span>
-                                <span class="volumeUp" onclick="changeVolume(10, 'up')">vol +</span>
+                                <span class="volumeUp" onclick="changeVolume(10, 'up')"></span>
                             </div>
                         </span>
                         <span class="songSlider" onclick="setSongPosition(this,event)"></span>
-                        <span class="songTimer"></span>
+                        <span class="songTimer">&nbsp;</span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
                         	<source type="audio/mpeg" src="sounds/file_gsm.wav">
                                 <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
