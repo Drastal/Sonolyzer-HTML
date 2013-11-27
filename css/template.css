@@ -72,6 +72,7 @@ div.appName {
 
 form.icon {
 	border:none;
+	vertical-align:top;
 }
 
 a.icon:hover {
