@@ -6,8 +6,9 @@
         <link href="css/reset.css" rel="stylesheet" media="screen">
         <link href="css/template.css" rel="stylesheet" media="screen">
         <link href="css/components.css" rel="stylesheet" media="screen">
-        <link href="css/modals.css" rel="stylesheet" media="screen">
-      
+        <link href="css/modals.css" rel="stylesheet" media="screen"> 
+        <link href="css/player.css" rel="stylesheet" media="screen">
+        
     </head>
     <body>
         <header>
@@ -64,7 +65,7 @@
             <div class="fileManagerBand">
                 <aside class="left">
                     <form id="searchFile" class="icon">
-                        <input type="search" placeholder="Search">
+                        <input type="search" placeholder="     Source sonore">
                     </form>
                     <a href="#" class="icon"><img src="img/reload.png" /></a>
                 </aside>
@@ -83,16 +84,20 @@
                                 	Intensifier
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="voiceLevel" class="onoffswitch-checkbox" id="voiceLevel">
-                                        <label class="onoffswitch-label" for="voiceLevel">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel">
+                                        <label class="switch-label" for="voiceLevel">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
                                 <span class="choiceRight">
                                 	R&eacute;duire
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <label for="activeLevel"></label>
                                 </span>
                             </div>
                             <div class="doubleFilter">
@@ -100,16 +105,20 @@
                                 	Aigues
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="voiceType" class="onoffswitch-checkbox" id="voiceType">
-                                        <label class="onoffswitch-label" for="voiceType">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType">
+                                        <label class="switch-label" for="voiceType">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
                                 <span class="choiceRight">
                                 	Graves
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <label for="activeType"></label>
                                 </span>
                             </div>
                         </div>
@@ -117,46 +126,16 @@
                             <h3 class="filterTitle">R&eacute;duction de bruit</h3>
                             <div class="singleFilter">
                             	<span class="label">
-                                	Interf&eacute;rences
+                                	Interf&eacute;rences GSM
                                 </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="interference" class="onoffswitch-checkbox" id="interference">
-                                        <label class="onoffswitch-label" for="interference">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
+                                <span class="checkBox">
+                                    <span class="activeFilter">
+                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" />
+                                        <label for="activeGSM"></label>
+                                    </span>
                                 </span>
                             </div>
-                            <div class="singleFilter">
-                            	<span class="label">
-                                	Circulation
-                                </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="road" class="onoffswitch-checkbox" id="road">
-                                        <label class="onoffswitch-label" for="road">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </div>
-                            <div class="singleFilter">
-                            	<span class="label">
-                                	&Eacute;cho
-                                </span>
-                                <span class="switchSingle">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="echo" class="onoffswitch-checkbox" id="echo">
-                                        <label class="onoffswitch-label" for="echo">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
-                                        </label>
-                                    </div>
-                                </span>
-                            </div>
+                            
                         </div>
                         <div class="filterType">
                             <h3 class="filterTitle">Personnalis&eacute;s</h3>
@@ -165,16 +144,20 @@
                                     Passe-haut
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="passeFilter" class="onoffswitch-checkbox" id="passeFilter">
-                                        <label class="onoffswitch-label" for="passeFilter">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter">
+                                        <label class="switch-label" for="passeFilter">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
                                 <span class="choiceRight">
                                     Passe-bas
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <label for="activePass"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
@@ -194,16 +177,20 @@
                                     Passe-bande
                                 </span>
                                 <span class="switchTwin">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="bandeFilter" class="onoffswitch-checkbox" id="bandeFilter">
-                                        <label class="onoffswitch-label" for="bandeFilter">
-                                            <div class="onoffswitch-inner"></div>
-                                            <div class="onoffswitch-switch"></div>
+                                    <div class="switch">
+                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter">
+                                        <label class="switch-label" for="bandeFilter">
+                                            <div class="switch-inner"></div>
+                                            <div class="switch-switch"></div>
                                         </label>
                                     </div>
                                 </span>
                                 <span class="choiceRight">
                                     Coupe-bande
+                                </span>
+                                <span class="activeFilter">
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <label for="activeBand"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
@@ -241,9 +228,23 @@
                 
                 <aside class="right">
                     <section class="player">
-                        <p>
-                        	Player
-                        </p>
+                        <span class="controls">
+                            <div class="play">
+                                <input type="checkbox" value="None" id="play" name="play" onChange="playPause('song')" />
+                                <label for="play"></label>
+                            </div>
+                            <div class="volumeControl">
+                                <span class="volumeDown" onclick="changeVolume(10, 'down')">Vol -</span>
+                                <span class="volumeMeter" onclick="setNewVolume(this,event)"></span>
+                                <span class="volumeUp" onclick="changeVolume(10, 'up')">vol +</span>
+                            </div>
+                        </span>
+                        <span class="songSlider" onclick="setSongPosition(this,event)"></span>
+                        <span class="songTimer"></span>
+                    	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
+                        	<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">
+                            <source type="audio/ogg" src="song/son2.ogg">
+                        </audio>
                     </section>
                     
                     <section class="spectrum">      
@@ -263,6 +264,7 @@
 			<!-- Contenu du footer -->
 		</footer>
         
+                        <!-- Scripts JavaScript -->
  			<script>
 
 				// create the audio context (chrome only for now)
@@ -374,5 +376,7 @@
 				};
 
 			</script>
+        <script type="text/javascript" src="js/checkboxChecker.js"></script>
+        <script type="text/javascript" src="js/playerControls.js"></script>
 	</body>
 </html>
