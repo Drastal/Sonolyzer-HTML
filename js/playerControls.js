@@ -51,6 +51,17 @@ function changeVolume(number, direction){
 	document.getElementById('volumeStatus').style.width = Math.round(percentageOfVolumeSlider) + "px";
 }
 
+function slideVolume() {
+   var myVol = volumeRange.value;
+   audio.volume = myVol;
+   if (myVol == 0) {
+	   audio.muted = true;
+   } else {
+	   audio.muted = false;
+   }
+}
+
+
 //Set's volume as a percentage of total volume based off of user click.
 function setVolume(percentage){
 	activeSong.volume = percentage;

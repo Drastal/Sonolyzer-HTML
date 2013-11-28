@@ -13,6 +13,10 @@ gradient.addColorStop(0.75, '#00ffff');
 gradient.addColorStop(0.25, '#00ff00');
 gradient.addColorStop(0, '#ffffff');
 
+// log if an error occurs
+function onError(e) {
+    console.log(e);
+}
 
 // when the javascript node is called
 // we use information from the analyzer node
@@ -41,4 +45,3 @@ function drawSpectrum(array) {
         //  console.log([i,value])
     }
 }
-;
