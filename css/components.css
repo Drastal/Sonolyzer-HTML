@@ -53,7 +53,7 @@ input[type=search]:hover {
 }
 
 
-/* Switch ON/OFF */
+/* Switch filtres */
 .switch {
     position: relative;
 	width: 35px;
@@ -96,7 +96,7 @@ input[type=search]:hover {
 .switch-inner:before {
     content: "";
     padding-left: 10px;
-    background-color: #F0F;
+    background-color: #FF0;
 }
 
 .switch-inner:after {

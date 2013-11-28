@@ -130,4 +130,3 @@ function drawSpectrum(array) {
         //  console.log([i,value])
     }
 }
-;

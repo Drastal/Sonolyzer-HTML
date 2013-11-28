@@ -96,7 +96,7 @@
                                 	R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" />
                                     <label for="activeLevel"></label>
                                 </span>
                             </div>
@@ -117,7 +117,7 @@
                                 	Graves
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onChange="checkboxMax1(this,'activeVoice')" />
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" />
                                     <label for="activeType"></label>
                                 </span>
                             </div>
@@ -243,6 +243,7 @@
                         <span class="songTimer">&nbsp;</span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
                         	<source type="audio/mpeg" src="sounds/file_gsm.wav">
+                                <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
                                 <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
                         </audio>
                     </section>
