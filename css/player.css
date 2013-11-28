@@ -12,7 +12,7 @@ span.controls {
 
 span.songSlider {
 	display:inline-block;
-	vertical-align:middle;
+	margin-top:35px;
 	width:60%;
 	height:30px;
 	background-color:#222;
@@ -30,34 +30,36 @@ span.songTimer {
 div.volumeControl {
 	width:100%;
 	text-align:center;
-	position:relative;
 }	
 
-div.positionControl {
-	position:absolute;
-	top:-40px;
-}
 
 /*Volume Level*/
 span.volumeLevel {
+	display:inline-block;
+	vertical-align:middle;
 	width:20px;
 	float:right;
 	text-align:center;
 	font-size:smaller;
+	line-height:20px;
 }
+
 
 /*Volume Mutter Button*/
 span.volumeMuter{
+	display:inline-block;
+	vertical-align:middle;
 	width:20px;
 	height:20px;
-	margin-top:40px;
 	float:left;
 	cursor:pointer;
 }
 
 /*Volume Slider*/
 span.volumeSlider{
-	width:60px;
+	display:inline-block;
+	vertical-align:middle;
+	width:50px;
 	padding:0px;
 	margin:0px;
 }
@@ -171,7 +173,7 @@ input[type=checkbox] {
 /* Volume range */
 .volumeSlider input[type=range] {
     height:2px;
-    width:56px;
+    width:50px;
 	padding:0px;
 	margin:0px;
 }
