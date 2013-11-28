@@ -76,17 +76,65 @@ function setupAudioNodes() {
     sourceNode.connect(analyser);
 
     //------------TEST DES FILTRES ACTIVES----------
-    /*if (intensifier activé){
+    
+    // si seulement les gains sont cochés
+     /*
+      * if(intensifier activé){                             // intensifier activé
+      *   sourceNode.connect(voiceIntensifyFilter);
+      *   voiceIntensifyFilter.connect(analyser);
+      *   analyser.connect(javascriptNode);
+      *   voiceIntensifyFilter.connect(context.destination);  
+      * }else{                                              // diminuer activé
+      *   sourceNode.connect(voiceReduceFilter);    
+      *   voiceReduceFilter.connect(analyser);
+      *   analyser.connect(javascriptNode);
+      *   voiceReduceFilter.connect(context.destination); 
+      * }
+      */
+    
+    // si seulement les passe bandes sont cochés
+    /*
+      * if(passe-bande voix grave activé){                  //passe-bande voix grave activé
+      *   sourceNode.connect(voiceBassFilter);
+      *   voiceBassFilter.connect(analyser);
+      *   analyser.connect(javascriptNode);
+      *   voiceBassFilter.connect(context.destination);  
+      * }else{                                              //passe-bande voix aigue activé
+      *   sourceNode.connect(voiceSharpFilter);
+      *   voiceSharpFilter.connect(analyser);
+      *   analyser.connect(javascriptNode);
+      *   voiceSharpFilter.connect(context.destination); 
+      * }
+      */
+    
+    //si les gains et les passe bandes sont cochés
+    /*
+     * if (intensifier activé){                             // intensifier activé
      * sourceNode.connect(voiceIntensifyFilter);
-     * if (passe-bande voix grave activé){
-     *      voiceIntensifyFilter.connect(voiceBassFilter);
-     *      voiceBassFilter.connect(analyser);
-     *      analyser.connect(javascriptNode);
-     *      voiceBassFilter.connect(context.destination);
-     *   }else if (passe-bande voix aigue activé){
-     *      
-     *      }  
-     * }else if (diminuer activé){
+     *   if (passe-bande voix grave activé){                    //passe-bande voix grave activé
+     *          voiceIntensifyFilter.connect(voiceBassFilter);
+     *          voiceBassFilter.connect(analyser);
+     *          analyser.connect(javascriptNode);
+     *          voiceBassFilter.connect(context.destination);
+     *   }else {                                                //ou passe-bande voix aigue activé
+     *           voiceIntensifyFilter.connect(voiceSharpFilter);
+     *          voiceSharpFilter.connect(analyser);
+     *          analyser.connect(javascriptNode);
+     *          voiceSharpFilter.connect(context.destination);
+     *          }  
+     * }else {                                              // ou diminuer activé
+     * sourceNode.connect(voiceReduceFilter);               
+     *   if (passe-bande voix grave activé){                    //passe-bande voix grave activé
+     *          voiceReduceFilter.connect(voiceBassFilter);
+     *          voiceBassFilter.connect(analyser);
+     *          analyser.connect(javascriptNode);
+     *          voiceBassFilter.connect(context.destination);
+     *   }else {                                                //ou passe-bande voix aigue activé
+     *          voiceReduceFilter.connect(voiceSharpFilter);
+     *          voiceSharpFilter.connect(analyser);
+     *          analyser.connect(javascriptNode);
+     *          voiceSharpFilter.connect(context.destination);
+     *          }      
      *  }*/
  
 }
