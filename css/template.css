@@ -124,18 +124,15 @@ section.export {
 
 section.player {
 	min-height:100px;
-	line-height:100px;
 }
 
 section.spectrum {
 	height:325px;
-	line-height:325px;
-        padding:20px;
+    padding:20px;
 }
 
 section.platine {
 	height:150px;
-	line-height:150px;
 }
 
 div.filterType, div.filterNoise {
