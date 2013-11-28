@@ -162,7 +162,7 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangePass.value">
-                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="24000" step="10" onchange="filtre_passe_bas('activePass', 'passeFilter', 'rangePass')">
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="24000" step="10" onchange="filtre_passe_bas('activePass', 'passeFilter', this)">
                                     <span class="smallerToRight">
                                     	f<sub>C</sub> = 
                                         <div class="output">
@@ -269,5 +269,6 @@
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
         <script type="text/javascript" src="js/spectrum.js"></script>
+        <script type="text/javascript" src="js/filtrespersos.js"></script>
 	</body>
 </html>
