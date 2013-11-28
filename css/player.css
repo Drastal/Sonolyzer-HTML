@@ -23,8 +23,17 @@ span.songTimer {
 	display:inline-block;
 	vertical-align:middle;
 	width:100px;
-	height:100%;
 	float:right;
+	margin-top:30px;
+}
+
+span.songTimer #currentTime {
+	font-size:xx-large;
+}
+
+span.songTimer #totalTime {
+	border-top:solid 1px #CCC;
+	font-size:large;
 }
 
 div.volumeControl {

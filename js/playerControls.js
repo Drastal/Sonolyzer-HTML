@@ -1,11 +1,9 @@
 // JavaScript Document
 
-var activeSong;
-//Plays the song. Just pass the id of the audio element.
+var activeSong = document.getElementById(song);
+var seekbar = document.getElementById('seekbar');
 
 function play(id){
-	//Sets the active song to the song being played. All other functions depend on this.
-	activeSong = document.getElementById(id);
 	//Plays the song defined in the audio tag.
 	activeSong.play();
 	
@@ -31,6 +29,21 @@ function playPause(id){
 	}else{
 		activeSong.pause();
 	}
+	
+	activeSong.addEventListener('timeupdate', UpdateTheTime, false);
+	activeSong.addEventListener('durationchange', SetSeekBar, false);
+	
+	if(!isNaN(parseFloat(activeSong.duration)) && isFinite(activeSong.duration)){
+		var sec2 = activeSong.duration;
+		sec2 = sec2 % 3600;
+		var min2 = Math.floor(sec2 / 60);
+		sec2 = Math.floor(sec2 % 60);
+		if (sec2.toString().length < 2) sec2 = "0" + sec2;
+		if (min2.toString().length < 2) min2 = "0" + min2;
+		document.getElementById('totalTime').innerHTML = min2 + ":" + sec2;
+	} else {
+		document.getElementById('totalTime').innerHTML = "";
+	}
 }
 
 function slideVolume() {
@@ -49,6 +62,34 @@ function muteVolume(obj) {
    } else {
 	   activeSong.muted = false;
    }
+}
+
+// fires when page loads, it sets the min and max range of the video
+function SetSeekBar() {
+	seekbar.min = 0;
+	seekbar.max = activeSong.duration;
+}
+
+// fires when seekbar is changed
+function ChangeTheTime() {
+	activeSong.currentTime = seekbar.value;
+}
+
+
+
+// executes when audio plays and the time is updated in the audio element, this writes the current duration elapsed in the label element
+
+function UpdateTheTime() {
+	var sec = activeSong.currentTime;
+	sec = sec % 3600;
+	var min = Math.floor(sec / 60);
+	sec = Math.floor(sec % 60);
+	if (sec.toString().length < 2) sec = "0" + sec;
+	if (min.toString().length < 2) min = "0" + min;
+	document.getElementById('currentTime').innerHTML = min + ":" + sec;
+	seekbar.min = activeSong.startTime;
+	seekbar.max = activeSong.duration;
+	seekbar.value = activeSong.currentTime;
 }
 
 /*
