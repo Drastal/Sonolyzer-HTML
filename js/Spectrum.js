@@ -55,47 +55,48 @@ function setupAudioNodes() {
     //setsup a filter LOWPASS
     filter1 = context.createBiquadFilter();
     filter1.type = filter1.LOWPASS;  // In this case it's a LOWPASS filter
-    filter1.frequency.value = 100.0;
-    filter1.Q = 0;
+    filter1.frequency.value = 400.0;
+    filter1.Q = 1;
     filter1.gain.value = 0;
 
     //setsup a filter LOWSHELF
-    //filter2 = context.createBiquadFilter();
-    //filter2.type = filter2.LOWSHELF;  // In this case it's a LOWSHELF filter
-    //filter2.frequency.value = 300.0;
-   // filter2.Q = 0;
-    //filter2.gain.value = 10;
+    filter2 = context.createBiquadFilter();
+    filter2.type = filter2.LOWSHELF;  // In this case it's a LOWSHELF filter
+    filter2.frequency.value = 400.0;
+    filter2.Q = 0;
+    filter2.gain.value = 20;
     
     //setsup a filter HIGHSHELF
-    //filter3 = context.createBiquadFilter();
-    //filter3.type = filter2.HIGHSHELF;  // In this case it's a HIGHSHELF filter
-   // filter3.frequency.value = 300.0;
-   // filter3.Q = 0;
-    //filter3.gain.value = -40;
+    filter3 = context.createBiquadFilter();
+    filter3.type = filter2.HIGHSHELF;  // In this case it's a HIGHSHELF filter
+    filter3.frequency.value = 400.0;
+    filter3.Q = 0;
+    filter3.gain.value = -40;
 
     // create a source node
     sourceNode = context.createMediaElementSource(audio);
 
     //filtre non-connecté
-    //sourceNode.connect(analyser);
+    sourceNode.connect(analyser);
 
     //filtre connecté
-    sourceNode.connect(filter1);
+    //sourceNode.connect(filter1);
     //sourceNode.connect(filter2);
     //sourceNode.connect(filter3);
-    filter1.connect(analyser);
-    //filter2.connect(analyser);
-   // filter3.connect(analyser);
+    //
+    //filter1.connect(analyser);
+    //filter1.connect(filter2);
+    //filter3.connect(analyser);
 
     analyser.connect(javascriptNode);
 
     //filtre connecté
-    filter1.connect(context.destination);
+    //filter1.connect(context.destination);
     //filter2.connect(context.destination);
     //filter3.connect(context.destination);
 
     //filtre non-connecté
-    //sourceNode.connect(context.destination);
+    sourceNode.connect(context.destination);
 }
 
 // log if an error occurs
