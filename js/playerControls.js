@@ -33,53 +33,22 @@ function playPause(id){
 	}
 }
 
-//Changes the volume up or down a specific number
-function changeVolume(number, direction){
-//Checks to see if the volume is at zero, if so it doesn't go any further.
-	if(activeSong.volume >= 0 && direction == "down"){
-		activeSong.volume = activeSong.volume - (number / 100);
-	}
-	//Checks to see if the volume is at one, if so it doesn't go any higher.
-	if(activeSong.volume  <=1 && direction == "up"){
-		activeSong.volume = activeSong.volume + (number / 100);
-	}
-	
-	//Finds the percentage of the volume and sets the volume meter accordingly.
-	var percentageOfVolume = activeSong.volume / 1;
-	var percentageOfVolumeSlider = document.getElementById('volumeMeter').offsetWidth * percentageOfVolume;
-	
-	document.getElementById('volumeStatus').style.width = Math.round(percentageOfVolumeSlider) + "px";
-}
-
 function slideVolume() {
-   var myVol = volumeRange.value;
-   audio.volume = myVol;
+   var myVol = document.getElementById('volume').value/100;
+   activeSong.volume = myVol;
    if (myVol == 0) {
-	   audio.muted = true;
+	   activeSong.muted = true;
    } else {
-	   audio.muted = false;
+	   activeSong.muted = false;
    }
 }
 
-
-//Set's volume as a percentage of total volume based off of user click.
-function setVolume(percentage){
-	activeSong.volume = percentage;
-	
-	var percentageOfVolume = activeSong.volume / 1;
-	var percentageOfVolumeSlider = document.getElementById('volumeMeter').offsetWidth * percentageOfVolume;
-	
-	document.getElementById('volumeStatus').style.width = Math.round(percentageOfVolumeSlider) + "px";
-}
-	
-//Set's new volume id based off of the click on the volume bar.
-function setNewVolume(obj,e){
-	var volumeSliderWidth = obj.offsetWidth;
-	var evtobj = window.event? event: e;
-	clickLocation = evtobj.layerX - obj.offsetLeft;
-	
-	var percentage = (clickLocation/volumeSliderWidth);
-	setVolume(percentage);
+function muteVolume(obj) {
+   if (obj.checked == true) {
+	   activeSong.muted = true;
+   } else {
+	   activeSong.muted = false;
+   }
 }
 
 /*
