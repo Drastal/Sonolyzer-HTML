@@ -248,8 +248,14 @@
                                 </form>
                             </div>
                         </span>
-                        <span class="songSlider" onclick="setSongPosition(this,event)"></span>
-                        <span class="songTimer">&nbsp;</span>
+                        <span class="songSlider">
+                            <input type="range" step="any" id="seekbar" onchange="ChangeTheTime()">
+                        </span>
+                        <span class="songTimer">
+                            <label id="currentTime">--:--</label>
+                            <br />
+                            <label id="totalTime"></label>
+                        </span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
                         	<source type="audio/mpeg" src="sounds/file_gsm.wav">
                             <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
