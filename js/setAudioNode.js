@@ -15,9 +15,18 @@ var javascriptNode;
 //récupérer le son (balise audio)
 var audio = document.getElementById("song");
 
+
+
+//------------------------intensifier (gain ++)
+var voiceIntensifyFilter;
+voiceIntensifyFilter = context.createBiquadFilter();
+    voiceIntensifyFilter.type = voiceIntensifyFilter.PEAKING;  // dans ce cas un PEAKING filter
+    voiceIntensifyFilter.frequency.value = 240.0; 
+    voiceIntensifyFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
+    voiceIntensifyFilter.gain.value = 40; //compris entre -40 et 40
+
 // charger le son
 setupAudioNodes();
-
 
 function setupAudioNodes() {
 
@@ -42,6 +51,12 @@ function setupAudioNodes() {
     analyser.connect(javascriptNode);
     //connexion de la source la destination
     sourceNode.connect(context.destination);
+    
+         /*sourceNode.connect(voiceIntensifyFilter);
+         voiceIntensifyFilter.connect(analyser);
+         analyser.connect(javascriptNode);
+         voiceIntensifyFilter.connect(context.destination);*/
+         
 }
 
 // log si erreur
