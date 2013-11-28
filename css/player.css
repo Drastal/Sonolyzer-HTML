@@ -12,11 +12,9 @@ span.controls {
 
 span.songSlider {
 	display:inline-block;
-	margin-top:35px;
 	width:60%;
-	height:30px;
-	background-color:#222;
-	border-radius:5px;
+	height:100%;
+	line-height:100px;
 }
 
 span.songTimer {
@@ -188,15 +186,38 @@ input[type=checkbox] {
 }
 
 .volumeSlider input[type="range"]::-webkit-slider-thumb {
-    width: 3px;
+    width: 4px;
     height: 10px;
 	cursor:pointer;
 }
 
 .volumeSlider input[type="range"]::-moz-range-thumb {
-    width: 5px;
-    height: 15px;
-	border-radius:0px;
+    width: 4px;
+    height: 10px;
+	border:none;
+	cursor:pointer;
+}
+
+
+/* Song Slider */
+.songSlider input[type=range] {
+    height:20px;
+    width:100%;
+	padding:0px;
+	margin:0px;
+}
+
+.songSlider input[type="range"]::-webkit-slider-thumb {
+    width: 6px;
+    height: 30px;
+	cursor:pointer;
+	border-radius:3px;
+}
+
+.songSlider input[type="range"]::-moz-range-thumb {
+    width: 6px;
+    height: 30px;
+	border-radius:3px;
 	border:none;
 	cursor:pointer;
 }

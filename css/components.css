@@ -227,17 +227,19 @@ input[type=range] {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance:none;
     background-color: white;
-    width: 5px;
+    width: 4px;
     height: 15px;
 	cursor:pointer;
+	border-radius:2px;
 }
 
 input[type="range"]::-moz-range-thumb {
 	-moz-appearance:none;
     background-color: none;
-    width: 5px;
+    width: 4px;
     height: 15px;
 	border-radius:0px;
 	border:none;
 	cursor:pointer;
+	border-radius:2px;
 }
