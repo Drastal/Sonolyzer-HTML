@@ -8,16 +8,11 @@
 // JavaScript Document
 
 
-// create the audio context (chrome only for now)
-var context = new webkitAudioContext();
-var sourceNode;
-var analyser;
-var javascriptNode;
-
 //-------------DECLARATION DES FILTRES PREDEFINIS POUR LA VOIX-------------
 
 //------------------------intensifier (gain ++)
 var voiceIntensifyFilter;
+var cpt1=0;
 voiceIntensifyFilter = context.createBiquadFilter();
     voiceIntensifyFilter.type = voiceIntensifyFilter.PEAKING;  // dans ce cas un PEAKING filter
     voiceIntensifyFilter.frequency.value = 240.0; 
@@ -48,11 +43,17 @@ voiceSharpFilter = context.createBiquadFilter();
     voiceSharpFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
     voiceSharpFilter.gain.value = 0; //non utilisé pour ce type de filtre
     
-    
-//get the sound
-var audio = document.getElementById("song");
 
-//get the checkboxes
+try{
+// load the sound
+voice_filter();
+}catch (e) {
+console.log("voice filter");}
+
+
+function voice_filter() {
+    
+    //get the checkboxes
 var voiceLevel = document.getElementById("activeLevel"); //activé, non activé
 var voiceType = document.getElementById("activeType");   //activé, non activé
 
@@ -60,32 +61,24 @@ var switchLevel = document.getElementById("voiceLevel"); //intensifier, diminuer
 var switchType = document.getElementById("voicetype");   //voix grave, voix aigue
 
 
-// load the sound
-setupAudioNodes();
-
-
-function setupAudioNodes() {
-
-    // setup a javascript node
-    javascriptNode = context.createJavaScriptNode(2048, 1, 1);
-
-    // connect to destination, else it isn't called
-    javascriptNode.connect(context.destination);
-
-    // setup a analyzer
-    analyser = context.createAnalyser();
-    analyser.smoothingTimeConstant = 0.3;
-    analyser.fftSize = 512;
-
-    // create a source node
-    sourceNode = context.createMediaElementSource(audio);
+   console.log("rentre dans voice_filter");
 
     //------------TEST DES FILTRES ACTIVES----------
     
     //alert(voiceLevel.checked);
     // si seulement les gains sont cochés
     if(voiceLevel.checked === true&&voiceType.checked !== true){
-    alert("gains cochés !");
+    console.log("ok");
+    
+        if(cpt1=0){
+            cpt1=0;
+            console.log(cpt1);
+        }else {
+            cpt1=1;
+            console.log(cpt1);
+        }
+        
+        
       if(switchLevel.checked !== true){                        // intensifier activé
          sourceNode.connect(voiceIntensifyFilter);
          voiceIntensifyFilter.connect(analyser);
@@ -150,12 +143,10 @@ function setupAudioNodes() {
     
     //si rien n'est activé
     if (voiceLevel.checked !== true&&voiceType.checked !== true){
-        //connexion de la source à l'analyser
-        sourceNode.connect(analyser);
-        //connexion de l'analyser au javascriptNode
-        analyser.connect(javascriptNode);
+
         //connexion de la source la destination
         sourceNode.connect(context.destination);
+         console.log(cpt1)
     }
     //console.log("error");
 }

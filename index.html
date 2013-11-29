@@ -85,7 +85,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel">
+                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel" onchange="voice_filter()">
                                         <label class="switch-label" for="voiceLevel">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -96,7 +96,7 @@
                                 	R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" />
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_filter()"/>
                                     <label for="activeLevel"></label>
                                 </span>
                             </div>
@@ -106,7 +106,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType">
+                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType" onchange="voice_filter()">
                                         <label class="switch-label" for="voiceType">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -117,7 +117,7 @@
                                 	Graves
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" />
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_filter()" />
                                     <label for="activeType"></label>
                                 </span>
                             </div>
@@ -162,7 +162,7 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangePass.value">
-                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="24000" step="10" onchange="filtre_passe_bas('activePass', 'passeFilter', this)">
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtre_passe_bas('activePass', 'passeFilter', this)">
                                     <span class="smallerToRight">
                                     	f<sub>C</sub> = 
                                         <div class="output">
@@ -195,7 +195,7 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeLowBand.value">
-                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="24000" step="10">
+                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="3000" step="10">
                                     <span class="smallerToRight">
                                     	f<sub>Cb</sub> = 
                                         <div class="output">
@@ -207,7 +207,7 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeHighBand.value">
-                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="24000" step="10">
+                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="3000" step="10">
                                     <span class="smallerToRight">
                                     	f<sub>Ch</sub> = 
                                         <div class="output">
@@ -257,8 +257,8 @@
                             <label id="totalTime"></label>
                         </span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
-                        	<source type="audio/mpeg" src="sounds/file_gsm.wav">
-                            <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
+                        	<!--<source type="audio/mpeg" src="sounds/file_gsm.wav">-->
+                            <source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">
                             <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
                         </audio>
                     </section>
@@ -284,8 +284,8 @@
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
         <script type="text/javascript" src="js/setAudioNode.js"></script>
-        <!--<script type="text/javascript" src="js/voiceFilter.js"></script>-->
+        <script type="text/javascript" src="js/voiceFilter.js"></script>
         <script type="text/javascript" src="js/spectrum.js"></script>
-        <script type="text/javascript" src="js/filtrespersos.js"></script>
+        <!--<script type="text/javascript" src="js/filtrespersos.js"></script>-->
 	</body>
 </html>
