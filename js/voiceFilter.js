@@ -82,7 +82,7 @@ function setupAudioNodes() {
 
     //------------TEST DES FILTRES ACTIVES----------
     
-    alert(voiceLevel.checked);
+    //alert(voiceLevel.checked);
     // si seulement les gains sont cochés
     if(voiceLevel.checked === true&&voiceType.checked !== true){
     alert("gains cochés !");
