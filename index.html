@@ -162,7 +162,9 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangePass.value">
-                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtre_passe_bas('activePass', 'passeFilter', this)">
+
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtremono()">
+
                                     <span class="smallerToRight">
                                     	f<sub>C</sub> = 
                                         <div class="output">
@@ -293,6 +295,6 @@
         <script type="text/javascript" src="js/spectrum.js"></script>
         
             <!-- Filtres Persos-->
-        <!--<script type="text/javascript" src="js/filtrespersos.js"></script>-->
+        <<script type="text/javascript" src="js/filtrespersos.js"></script>
 	</body>
 </html>
