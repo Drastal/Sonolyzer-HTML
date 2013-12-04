@@ -9,204 +9,132 @@
 
 
 //-------------DECLARATION DES FILTRES PREDEFINIS POUR LA VOIX-------------
-
+var frequenceVoiceIntensifyFilter =240.0;
+var QVoiceIntensifyFilter =0.8;
+var gainVoiceIntensifyFilter =40;
+var frequenceVoiceReduceFilter =240.0;
+var QVoiceReduceFilter =0.8;
+var gainVoiceReduceFilter =-40;
+var frequenceVoiceBassFilter =240.0;
+var QvoiceBassFilter =0.8;
+var gainvoiceBassFilter =0;
+var frequenceVoiceSharpFilter =240.0;
+var QvoiceSharpFilter =0.8;
+var gainvoiceSharpFilter =0;
 //------------------------intensifier (gain ++)
+function setUpVoiceFilters(){
 var voiceIntensifyFilter;
-var cpt1=0;
 voiceIntensifyFilter = context.createBiquadFilter();
     voiceIntensifyFilter.type = voiceIntensifyFilter.PEAKING;  // dans ce cas un PEAKING filter
-    voiceIntensifyFilter.frequency.value = 240.0; 
-    voiceIntensifyFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
-    voiceIntensifyFilter.gain.value = 40; //compris entre -40 et 40
+    voiceIntensifyFilter.frequency.value = 0; 
+    voiceIntensifyFilter.Q = 0; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
+    voiceIntensifyFilter.gain.value = 0; //compris entre -40 et 40
+tabVoiceFilter[0]=voiceIntensifyFilter;    
+
     
 //-------------------------diminuer (gain --)
 var voiceReduceFilter;
 voiceReduceFilter = context.createBiquadFilter();
     voiceReduceFilter.type = voiceReduceFilter.PEAKING;  // dans ce cas un PEAKING filter
-    voiceReduceFilter.frequency.value = 240.0; 
-    voiceReduceFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
-    voiceReduceFilter.gain.value = -40; //compris entre -40 et 40
+    voiceReduceFilter.frequency.value = 0; 
+    voiceReduceFilter.Q = 0; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
+    voiceReduceFilter.gain.value = 0; //compris entre -40 et 40
+tabVoiceFilter[1]=voiceReduceFilter;    
+
     
 //-------------------------passe-bande voix graves (80-400Hz)
 var voiceBassFilter;
 voiceBassFilter = context.createBiquadFilter();
     voiceBassFilter.type = voiceBassFilter.BANDPASS;  // dans ce cas un BANDPASS filter
     voiceBassFilter.frequency.value = 240.0; // moyenne 80-400 Hz
-    voiceBassFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
+    voiceBassFilter.Q = 0.0001; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
     voiceBassFilter.gain.value = 0; //non utilisé pour ce type de filtre
+tabVoiceFilter[2]=voiceBassFilter;
+
     
 //-------------------------passe-bande voix aigues (300-1500Hz)
 var voiceSharpFilter;
 voiceSharpFilter = context.createBiquadFilter();
     voiceSharpFilter.type = voiceSharpFilter.BANDPASS;  // dans ce cas un BANDPASS filter
-    voiceSharpFilter.frequency.value = 900.0; // moyenne 80-400 Hz
-    voiceSharpFilter.Q = 1000; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
+    voiceSharpFilter.frequency.value = 240.0; // moyenne 80-400 Hz
+    voiceSharpFilter.Q = 0.0001; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
     voiceSharpFilter.gain.value = 0; //non utilisé pour ce type de filtre
-  
+ tabVoiceFilter[3]=voiceSharpFilter;    
 
 
-//--------------------fonction case Gain cochée------------------------
-function voice_activelevel_checked(){
-    //get the checkboxes
+
+//---------------connection successive des filtres de la voix----------
+for (i=1; i<tabVoiceFilter.length;i++){
+    tabVoiceFilter[i-1].connect(tabVoiceFilter[i]);
+}
+}
+
+//--------------initialisation des filtres-----------------
+
+
+
+function voice_filter(){
     var voiceLevel = document.getElementById("activeLevel"); //activé, non activé
     var switchLevel = document.getElementById("voiceLevel"); //intensifier, diminuer
     var voiceType = document.getElementById("activeType");   //activé, non activé
     var switchType = document.getElementById("voiceType");   //voix grave, voix aigue
+    
     
     // case gains cochée 
     if(voiceLevel.checked === true){       
         
       if(switchLevel.checked !== true){                        // intensifier activé
-         console.log("intensifier activé");  
-         sourceNode.connect(voiceIntensifyFilter);
-         voiceIntensifyFilter.connect(analyser);
-         voiceIntensifyFilter.connect(context.destination);  
+        console.log("intensifier activé");  
+        tabVoiceFilter[0].frequency.value =frequenceVoiceIntensifyFilter;
+        tabVoiceFilter[0].Q = QVoiceIntensifyFilter; 
+        tabVoiceFilter[0].gain.value = gainVoiceIntensifyFilter; 
       }else{                                                 // ou diminuer activé
-         console.log("diminuer activé");  
-         sourceNode.connect(voiceReduceFilter);    
-         voiceReduceFilter.connect(analyser);
-         voiceReduceFilter.connect(context.destination); 
+        console.log("diminuer activé"); 
+        tabVoiceFilter[1].frequency.value =frequenceVoiceReduceFilter;
+        tabVoiceFilter[1].Q = QVoiceReduceFilter; 
+        tabVoiceFilter[1].gain.value = gainVoiceReduceFilter; 
          }  
          
     }else{ //case gain décochée
          if(switchLevel.checked !== true){                        // intensifier desactivé
             console.log("intensifier desactivé");  
-            sourceNode.disconnect(voiceIntensifyFilter);
-            voiceIntensifyFilter.disconnect(analyser);
-            voiceIntensifyFilter.disconnect(context.destination);  
+            tabVoiceFilter[0].frequency.value =0;
+            tabVoiceFilter[0].Q = 0; 
+            tabVoiceFilter[0].gain.value = 0; 
           }else{                                                 // ou diminuer desactivé
-            console.log("diminuer desactivé");  
-            sourceNode.disconnect(voiceReduceFilter);    
-            voiceReduceFilter.disconnect(analyser);
-            voiceReduceFilter.disconnect(context.destination); 
-             }  
-             //si la case passe bande est décochée, on rebranche la source
-            if(voiceType.checked !== true){
-               sourceNode.connect(analyser);
-               sourceNode.connect(context.destination);
-            }else{
-                voice_activetype_checked();
-                console.log("activation de voice_activetype_checked()");
-            }  
+              console.log("diminuer desactivé");
+              tabVoiceFilter[1].frequency.value =0;
+              tabVoiceFilter[1].Q = 0; 
+              tabVoiceFilter[1].gain.value = 0; 
+             }   
      }    
-}
-
-//------------------------fonction case Passe Bande Cochée------------------
-function voice_activetype_checked(){   
-    //get the checkboxes
-    var voiceLevel = document.getElementById("activeLevel"); //activé, non activé
-    var switchLevel = document.getElementById("voiceLevel"); //intensifier, diminuer
-    var voiceType = document.getElementById("activeType");   //activé, non activé
-    var switchType = document.getElementById("voiceType");   //voix grave, voix aigue
     
-    // case Passe Bande cochée 
-    if(voiceType.checked === true){       
-        
+     // case Passe Bande cochée 
+    if(voiceType.checked === true){              
       if(switchType.checked === true){                        //passe-bande voix grave activé
          console.log("passe-bande voix grave activé");  
-         sourceNode.connect(voiceBassFilter);
-         voiceBassFilter.connect(analyser);
-         voiceBassFilter.connect(context.destination);  
+        tabVoiceFilter[2].frequency.value =frequenceVoiceBassFilter;
+        tabVoiceFilter[2].Q = QVoiceBassFilter; 
+        tabVoiceFilter[2].gain.value = gainVoiceBassFilter; 
        }else{                                               //passe-bande voix aigue activé
          console.log("passe-bande voix aigue activé");  
-         sourceNode.connect(voiceSharpFilter);
-         voiceSharpFilter.connect(analyser);
-         voiceSharpFilter.connect(context.destination); 
+        tabVoiceFilter[3].frequency.value =frequenceVoiceSharpFilter;
+        tabVoiceFilter[3].Q = QvoiceSharpFilter; 
+        tabVoiceFilter[3].gain.value = gainVoiceSharpFilter; 
        }
          
     }else{ //case Passe Bande décochée
          if(switchType.checked !== true){                        // passe-bande voix grave desactivé
              console.log("passe-bande voix grave desactivé");    
-            sourceNode.disconnect(voiceBassFilter);
-            voiceBassFilter.disconnect(analyser);
-            voiceBassFilter.disconnect(context.destination);  
+             tabVoiceFilter[2].frequency.value =240;
+             tabVoiceFilter[2].Q = 0.0001; 
+             tabVoiceFilter[2].gain.value = 0; 
             }else{                                                 // ou passe-bande voix aigue  desactivé
                 console.log("passe-bande voix aigue  desactivé"); 
-                sourceNode.disconnect(voiceSharpFilter);    
-                voiceSharpFilter.disconnect(analyser);
-                voiceSharpFilter.disconnect(context.destination); 
-            }  
-            //si la case gain est décochée, on rebranche la source
-            if(voiceLevel.checked !== true){
-               sourceNode.connect(analyser);
-               sourceNode.connect(context.destination);
-            }
-            else{
-                voice_activelevel_checked();
-                console.log("activation de voice_activelevel_checked()");
+                tabVoiceFilter[3].frequency.value =240;
+                tabVoiceFilter[3].Q = 0.0001; 
+                tabVoiceFilter[3].gain.value = 0; 
             }  
         }    
-}
-
-//----------------fonction Switch gain activé-----------
-function voice_voicelevel_checked(){   
-    //get the checkboxes
-    var voiceLevel = document.getElementById("activeLevel"); //activé, non activé
-    var switchLevel = document.getElementById("voiceLevel"); //intensifier, diminuer
-    
-     // case gains cochée 
-    if(voiceLevel.checked === true){       
-        
-      if(switchLevel.checked !== true){                        
-         console.log("intensifier activé, désactivation diminuer");  
-         //diminuer desactivé
-         sourceNode.disconnect(voiceReduceFilter);    
-         voiceReduceFilter.disconnect(analyser);
-         voiceReduceFilter.disconnect(context.destination); 
-         // intensifier activé   
-         sourceNode.connect(voiceIntensifyFilter);
-         voiceIntensifyFilter.connect(analyser);
-         voiceIntensifyFilter.connect(context.destination);  
-         }else{                                                 
-             console.log("diminuer activé, désactivation intensifier");  
-              //intensifier desactivé
-             sourceNode.disconnect(voiceIntensifyFilter);    
-             voiceIntensifyFilter.disconnect(analyser);
-             voiceIntensifyFilter.disconnect(context.destination); 
-             // diminuer activé   
-             sourceNode.connect(voiceReduceFilter);
-            voiceReduceFilter.connect(analyser);
-            voiceReduceFilter.connect(context.destination);  
-            } 
-    voice_activetype_checked();        
-    }else{ //case gain décochée
-         alert("Vous n'avez pas coch\351 la case pour modifier le gain de la voix ! Le filtre ne sera pas appliqu\351."); 
-     }     
-}
-
-//----------------fonction Switch type de voix activé-----------
-function voice_voicetype_checked(){   
-    //get the checkboxes
-    var voiceType = document.getElementById("activeType");   //activé, non activé
-    var switchType = document.getElementById("voiceType");   //voix grave, voix aigue    
-        
-      // case Passe Bande cochée 
-    if(voiceType.checked === true){       
-        
-      if(switchType.checked === true){                        //passe-bande voix grave activé
-         console.log("passe-bande voix grave activé, désactivation passe-bande voix aigue");  
-          //passe-bande voix aigue desactivé
-         sourceNode.disconnect(voiceSharpFilter);    
-         voiceSharpFilter.disconnect(analyser);
-         voiceSharpFilter.disconnect(context.destination); 
-         //passe-bande voix grave activé
-         sourceNode.connect(voiceBassFilter);
-         voiceBassFilter.connect(analyser);
-         voiceBassFilter.connect(context.destination);  
-         }else{                                               //passe-bande voix aigue activé
-            console.log("passe-bande voix grave aigue, désactivation passe-bande voix grave");  
-             //passe-bande voix grave desactivé
-            sourceNode.disconnect(voiceBassFilter);    
-             voiceBassFilter.disconnect(analyser);
-            voiceBassFilter.disconnect(context.destination); 
-            //passe-bande voix aigue activé
-            sourceNode.connect(voiceSharpFilter);
-            voiceSharpFilter.connect(analyser);
-            voiceSharpFilter.connect(context.destination);  
-        }
-     voice_activelevel_checked()    
-    }else{ //case Passe-Bande pas coché
-        alert("Vous n'avez pas coch\351 la case pour modifier le type de la voix ! Le filtre ne sera pas appliqu\351."); 
-    }    
 }
 
