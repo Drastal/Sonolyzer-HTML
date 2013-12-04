@@ -50,14 +50,19 @@ function setupAudioNodes() {
     //connexion de l'analyser au javascriptNode
     analyser.connect(javascriptNode);
     //connexion de la source la destination
-    //sourceNode.connect(context.destination);
+    sourceNode.connect(context.destination);
     
     
     //filtre de test
          /*sourceNode.connect(voiceIntensifyFilter);
          voiceIntensifyFilter.connect(analyser);
          analyser.connect(javascriptNode);
-         voiceIntensifyFilter.connect(context.destination);*/
+         voiceIntensifyFilter.connect(context.destination);
+         
+         sourceNode.disconnect(voiceIntensifyFilter);
+         sourceNode.connect(analyser);
+         voiceIntensifyFilter.disconnect(context.destination);
+         sourceNode.connect(context.destination);*/
          
 }
 

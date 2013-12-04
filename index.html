@@ -85,7 +85,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel" onchange="voice_filter()">
+                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel" onchange="voice_voicelevel_checked()">
                                         <label class="switch-label" for="voiceLevel">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -96,7 +96,7 @@
                                 	R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_filter()"/>
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_activelevel_checked()"/>
                                     <label for="activeLevel"></label>
                                 </span>
                             </div>
@@ -106,7 +106,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType" onchange="voice_filter()">
+                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType" onchange="voice_voicetype_checked()">
                                         <label class="switch-label" for="voiceType">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -117,7 +117,7 @@
                                 	Graves
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_filter()" />
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_activetype_checked()" />
                                     <label for="activeType"></label>
                                 </span>
                             </div>
@@ -261,8 +261,8 @@
                             <label id="totalTime"></label>
                         </span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
-                        	<!--<source type="audio/mpeg" src="sounds/file_gsm.wav">-->
-                            <source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">
+                        	<source type="audio/mpeg" src="sounds/file_gsm.wav">
+                            <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
                             <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
                         </audio>
                     </section>
@@ -288,8 +288,15 @@
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
         <script type="text/javascript" src="js/setAudioNode.js"></script>
+        
+            <!-- Filtres de la voix-->
         <script type="text/javascript" src="js/voiceFilter.js"></script>
+        <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+        
+            <!-- Spectre-->
         <script type="text/javascript" src="js/spectrum.js"></script>
+        
+            <!-- Filtres Persos-->
         <!--<script type="text/javascript" src="js/filtrespersos.js"></script>-->
 	</body>
 </html>
