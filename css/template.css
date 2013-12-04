@@ -1,15 +1,19 @@
 @CHARSET "ISO-8859-1";
+/* Feuille de style principale */
 
-@font-face {
+/* Police importee */
+@font-face { 
 	font-family: 'normal';
 	src: url("../fonts/eurof55.ttf") format("truetype");
 }
 
+/* Mise en indice */
 sub {
 	vertical-align: sub;
 	font-size: smaller;
 }
 
+/* Style du corps principal de la page */
 body {
 	width:auto;
 	min-width:800px;
@@ -20,34 +24,53 @@ body {
 	overflow:auto;
 }
 
+/* Style de l'en-tete */
 header {
 	height:50px;
 	width:100%;
     text-align:right;
 }
 
+/* Corps principal de la page */
 div.main {
 	width:100%;
 	margin:0 auto;
 	text-align:center;
 }
 
+/* Departage droite et gauche */
 aside {
 	display:inline-block;
 	vertical-align:top;
 }
-	
+
+/* Cote gauche de l'application */
+aside.left {
+	width:280px;
+	margin-right:10px;
+	text-align:right;
+}
+
+/* Cote droit de l'application */
+aside.right {
+	width:60%;
+	min-width:500px;
+	text-align:left;
+}
+
+/* Lien */
 a {
 	text-decoration:none;
 	color:inherit;
 }
 
+/* Titre de niveau 3 */
 h3 {
 	border-bottom:1px solid white;
 	text-transform:uppercase;
 }
 	
-
+/* Titre de l'application */
 div.appName {
 	padding:10px;
 	vertical-align:middle;
@@ -55,6 +78,8 @@ div.appName {
 	font-size:30px;
 }
 
+
+/* Action sous forme d'icone */
 .icon {
 	height:30px;
 	width:30px;
@@ -70,37 +95,29 @@ div.appName {
 	-moz-transition: all .5s;
 }
 
+/* Disposition pour le champ de recherche */
 form.icon {
 	border:none;
 	vertical-align:top;
 }
 
+/* Lien au survol du pointeur */
 a.icon:hover {
 	background-color: DeepSkyBlue;
 }
 
-div.fileManagerBand a.icon:hover {
-	background-color: black;
-}
-
-aside.left {
-	width:280px;
-	margin-right:10px;
-	text-align:right;
-}
-
-aside.right {
-	width:60%;
-	min-width:500px;
-	text-align:left;
-}
-
+/* Barre de gestion des fichiers */
 div.fileManagerBand {
 	background-color:DeepSkyBlue;
 	height:50px;
 	width:100%;
 }
 
+div.fileManagerBand a.icon:hover {
+	background-color: black;
+}
+
+/* Affichage du lien de la bande sonore chargee */
 p.address {
 	height:50px;
 	line-height:50px;
@@ -111,6 +128,7 @@ p.address {
     background-position:bottom left;
 }
 
+/* Style general d'un module */
 section {
     background-color:#333333;
     margin-top:10px;
@@ -135,6 +153,7 @@ section.platine {
 	height:150px;
 }
 
+/* Style des blocs du module ddes filtres */
 div.filterType, div.filterNoise {
 	padding:10px;
 	margin-bottom:5px;
@@ -145,6 +164,7 @@ div.filterNoise, span.choiceLeft {
 	text-align:right;
 }
 
+/* Choix droit lors d'un switch */
 span.choiceRight {
 	text-align:left;
 }
@@ -173,6 +193,7 @@ span.checkBox {
 	margin-right:5px;
 }
 
+/* Range de frequence */
 div.frequencyRange {
 	width:100%;
 	text-align:left;
@@ -181,6 +202,7 @@ div.frequencyRange {
 	margin-bottom:10px;
 }
 
+/* Affichage de la frequence en plus petit */
 span.smallerToRight {
 	font-size:small;
 	float:right;
@@ -188,6 +210,7 @@ span.smallerToRight {
 	display:inline-block;
 }
 
+/* Valeur de la frequence */
 div.output {
 	width:40px;
 	text-align:right;

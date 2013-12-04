@@ -4,33 +4,31 @@ var activeSong;
 var seekbar = document.getElementById('seekbar');
 
 function play(id){
-        //Sets the active song to the song being played. All other functions depend on this.
+        //Lecture de la source audio dans la balise audio
         activeSong = document.getElementById(id);
-        //Plays the song defined in the audio tag.
         activeSong.play();
 }
 
-//Pauses the active song.
 function pause(){
+        //Pause de la source audio dans la balise audio
         activeSong.pause();
 }
 
 function playPause(id){
-        //Sets the active song since one of the functions could be play.
+        //Lance ou stop la lecture du son à l'appui du bonton en fonction de l'etat actuel de lecture
         activeSong = document.getElementById(id);
 		
-        //Checks to see if the song is paused, if it is, play it from where it left off otherwise pause it.
         if (activeSong.paused){
                 activeSong.play();
         }else{
                 activeSong.pause();
         }
 	
-	//Update everytime the elapsed time and progress bar
+	//Mise a jour constante du temps de lecture et de la barre de progression
 	activeSong.addEventListener('timeupdate', UpdateTheTime, false);
 	activeSong.addEventListener('durationchange', SetSeekBar, false);
 	
-	//Show the total duration if possible
+	//Si bande-son en local (ie, pas un flux), afficher la duree de celle-ci
 	if(!isNaN(parseFloat(activeSong.duration)) && isFinite(activeSong.duration)){
 		var sec2 = activeSong.duration;
 		sec2 = sec2 % 3600;
@@ -44,7 +42,7 @@ function playPause(id){
 	}
 }
 
-// Set the choosen volume value with the range
+// Affecte la valeur du range au niveau du volume
 function slideVolume() {
    var myVol = document.getElementById('volume').value/100;
    activeSong.volume = myVol;
@@ -55,7 +53,7 @@ function slideVolume() {
    }
 }
 
-// Disable the volume
+// Desactive le volume (mute)
 function muteVolume(obj) {
    if (obj.checked == true) {
 	   activeSong.muted = true;
@@ -64,18 +62,18 @@ function muteVolume(obj) {
    }
 }
 
-// Setting the min and max range of the audio
+// Definit le debut et la fin de la barre de progression
 function SetSeekBar() {
 	seekbar.min = 0;
 	seekbar.max = activeSong.duration;
 }
 
-// fires when seekbar is changed
+// Continue la lecture au niveau choisi sur la barre de progression
 function ChangeTheTime() {
 	activeSong.currentTime = seekbar.value;
 }
 
-//Update the elapsed time
+//Mise a jour du temps de lecture
 function UpdateTheTime() {
 	var sec = activeSong.currentTime;
 	sec = sec % 3600;
