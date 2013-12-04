@@ -24,16 +24,7 @@ function filtremono(){
     var range = document.getElementById("rangePass")
 
     
-        // création d'une node javascript
-        javascriptNode = context.createJavaScriptNode(2048, 1, 1);
-
-        // connection à la destination
-        javascriptNode.connect(context.destination);
-        
-        // setup a analyzer
-        analyser = context.createAnalyser();
-        analyser.smoothingTimeConstant = 0.3;
-        analyser.fftSize = 512;
+      
     
         if(actif.checked == true)
         {
@@ -53,18 +44,15 @@ function filtremono(){
                 filtre.frequency.value = range.value;
                 filtre.Q = 1;
             }
-        }
-        // création d'une node source
-        sourceNode = context.createMediaElementSource(audio);
-
-        //filtre connecté
-        sourceNode.connect(filtre);
-        filtre.connect(analyser);
+            
+            //filtre connecté
+            sourceNode.connect(filtre);
+            filtre.connect(analyser);
+            
+            //filtre connecté
+            filtre.connect(context.destination);
+          }
         
-        analyser.connect(javascriptNode);
-
-        //filtre connecté
-        filtre.connect(context.destination);
         
 }
 
