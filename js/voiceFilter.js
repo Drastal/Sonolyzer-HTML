@@ -12,7 +12,6 @@
 
 //------------------------intensifier (gain ++)
 var voiceIntensifyFilter;
-var cpt1=0;
 voiceIntensifyFilter = context.createBiquadFilter();
     voiceIntensifyFilter.type = voiceIntensifyFilter.PEAKING;  // dans ce cas un PEAKING filter
     voiceIntensifyFilter.frequency.value = 240.0; 

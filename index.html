@@ -130,7 +130,7 @@
                                 </span>
                                 <span class="checkBox">
                                     <span class="activeFilter">
-                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" />
+                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" onchange="noise_activeGSM_checked()" />
                                         <label for="activeGSM"></label>
                                     </span>
                                 </span>
@@ -288,6 +288,9 @@
             <!-- Filtres de la voix-->
         <script type="text/javascript" src="js/voiceFilter.js"></script>
         <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+        
+            <!-- Filtres du bruit-->
+        <script type="text/javascript" src="js/noiseFilter.js"></script>
         
             <!-- Spectre-->
         <script type="text/javascript" src="js/spectrum.js"></script>
