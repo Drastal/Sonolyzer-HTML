@@ -1,3 +1,7 @@
+<?php
+include('php/iceCastFileLoad.php');
+
+?>
 <!doctype html>
 <html>
     <head>
@@ -13,7 +17,7 @@
     <body>
         <header>
             <div class="appName">
-                <h1><a href="index.html"> Sonolyzer </a></h1>
+                <h1><a href="index.php">Sonolyzer</a></h1>
             </div>
             
             <a href="#help" class="icon"><img src="img/help.png" /></a>
@@ -64,13 +68,14 @@
 		<div class="main">
             <div class="fileManagerBand">
                 <aside class="left">
-                    <form id="searchFile" class="icon">
-                        <input type="search" placeholder="     Source sonore">
+                    <form id="searchFile" class="icon" method="post" action="index.php">
+                        <input type="search" name="fileSearch" placeholder="     Source sonore"/>
+                        <input type="submit" hidden/>
                     </form>
                     <a href="#" class="icon"><img src="img/reload.png" /></a>
                 </aside>
                 <aside class="right">
-                    <a href="#"><p class="address">Test d'adresse</p></a>
+                    <a href="#"><p class="address"><?php echo $address?></p></a>
                 </aside>
             </div>
 
@@ -259,7 +264,7 @@
                             <label id="totalTime"></label>
                         </span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
-                        	<source type="audio/mpeg" src="sounds/file_gsm.wav">
+                        	<source type="audio/mpeg" <?php echo "src = ".$sound ?>>
                             <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
                             <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
                         </audio>
