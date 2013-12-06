@@ -145,7 +145,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter">
+                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter" onchange="filtre_perso()">
                                         <label class="switch-label" for="passeFilter">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -156,14 +156,14 @@
                                     Passe-bas
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
                                     <label for="activePass"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangePass.value">
 
-                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtremono()">
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtre_perso()">
 
                                     <span class="smallerToRight">
                                     	f<sub>C</sub> = 
@@ -180,7 +180,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter" onChange="changeCheckBox()">
+                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter" onChange="filtre_perso()">
                                         <label class="switch-label" for="bandeFilter">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -191,13 +191,13 @@
                                     Coupe-bande
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
                                     <label for="activeBand"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeLowBand.value">
-                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="3000" step="10">
+                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="3000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
                                     	f<sub>Cb</sub> = 
                                         <div class="output">
@@ -209,7 +209,7 @@
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeHighBand.value">
-                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="3000" step="10">
+                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="3000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
                                     	f<sub>Ch</sub> = 
                                         <div class="output">
