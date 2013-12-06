@@ -11,6 +11,7 @@ var context = new webkitAudioContext();
 var sourceNode;
 var analyser;
 var javascriptNode;
+var tabSpecificFilters = new Array();
 
 //récupérer le son (balise audio)
 var audio = document.getElementById("song");
