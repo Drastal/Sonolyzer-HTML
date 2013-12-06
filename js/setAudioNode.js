@@ -8,6 +8,11 @@
 
 // Créer le contexte audio (chrome seulement pour l'instant)
 var context = new webkitAudioContext();
+
+//création tableau de filtres de la voix
+var tabVoiceFilter = new Array ();
+
+
 var sourceNode;
 var analyser;
 var javascriptNode;
@@ -45,13 +50,15 @@ function setupAudioNodes() {
 
     // créer une source node
     sourceNode = context.createMediaElementSource(audio);
-
-    //connexion de la source à l'analyser
-    sourceNode.connect(analyser);
     //connexion de l'analyser au javascriptNode
     analyser.connect(javascriptNode);
-    //connexion de la source la destination
-    sourceNode.connect(context.destination);
+
+    setUpVoiceFilters();
+    //relie tabVoiceFilter à une entrée et a une sortie
+    console.log(tabVoiceFilter.length);
+    sourceNode.connect(tabVoiceFilter[0]);
+    tabVoiceFilter[tabVoiceFilter.length-1].connect(analyser);
+    tabVoiceFilter[tabVoiceFilter.length-1].connect(context.destination);
     
     
     //filtre de test

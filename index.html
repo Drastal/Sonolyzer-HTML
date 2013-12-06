@@ -85,7 +85,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel" onchange="voice_voicelevel_checked()">
+                                        <input type="checkbox" name="voiceLevel" class="switch-checkbox" id="voiceLevel" onchange="voice_filter()">
                                         <label class="switch-label" for="voiceLevel">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -96,7 +96,7 @@
                                 	R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_activelevel_checked()"/>
+                                    <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_filter()"/>
                                     <label for="activeLevel"></label>
                                 </span>
                             </div>
@@ -106,7 +106,7 @@
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType" onchange="voice_voicetype_checked()">
+                                        <input type="checkbox" name="voiceType" class="switch-checkbox" id="voiceType" onchange="voice_filter()">
                                         <label class="switch-label" for="voiceType">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -117,7 +117,7 @@
                                 	Graves
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_activetype_checked()" />
+                                    <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_filter()" />
                                     <label for="activeType"></label>
                                 </span>
                             </div>
@@ -130,7 +130,7 @@
                                 </span>
                                 <span class="checkBox">
                                     <span class="activeFilter">
-                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" />
+                                        <input type="checkbox" value="None" id="activeGSM" name="activeGSM" onchange="noise_activeGSM_checked()" />
                                         <label for="activeGSM"></label>
                                     </span>
                                 </span>
@@ -283,13 +283,18 @@
 		</footer>
         
         <!-- Scripts JavaScript -->
+         <!-- Filtres de la voix-->
+        <script type="text/javascript" src="js/voiceFilter.js"></script>
+        <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+        
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
         <script type="text/javascript" src="js/setAudioNode.js"></script>
         
-            <!-- Filtres de la voix-->
-        <script type="text/javascript" src="js/voiceFilter.js"></script>
-        <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+           
+        
+            <!-- Filtres du bruit-->
+        <script type="text/javascript" src="js/noiseFilter.js"></script>
         
             <!-- Spectre-->
         <script type="text/javascript" src="js/spectrum.js"></script>

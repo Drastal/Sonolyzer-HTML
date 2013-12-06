@@ -1,6 +1,7 @@
-@charset "utf-8";
-/* CSS Document */
+@charset "ISO-8859-1";
+/* Style du lecteur audio */
 
+/* Bloc des commandes du lecteur audio */
 span.controls {
 	display:inline-block;
 	vertical-align:middle;
@@ -10,6 +11,7 @@ span.controls {
 	float:left;
 }
 
+/* Barre de progression */
 span.songSlider {
 	display:inline-block;
 	width:60%;
@@ -17,6 +19,7 @@ span.songSlider {
 	line-height:100px;
 }
 
+/* Temps ecoule */
 span.songTimer {
 	display:inline-block;
 	vertical-align:middle;
@@ -34,13 +37,14 @@ span.songTimer #totalTime {
 	font-size:large;
 }
 
+/* Control du volume */
 div.volumeControl {
 	width:100%;
 	text-align:center;
 }	
 
 
-/*Volume Level*/
+/* Niveau du volume */
 span.volumeLevel {
 	display:inline-block;
 	vertical-align:middle;
@@ -52,7 +56,7 @@ span.volumeLevel {
 }
 
 
-/*Volume Mutter Button*/
+/* Couper le son (mute) */
 span.volumeMuter{
 	display:inline-block;
 	vertical-align:middle;
@@ -62,7 +66,7 @@ span.volumeMuter{
 	cursor:pointer;
 }
 
-/*Volume Slider*/
+/* Volume Slider */
 span.volumeSlider{
 	display:inline-block;
 	vertical-align:middle;
@@ -71,17 +75,8 @@ span.volumeSlider{
 	margin:0px;
 }
 
-/*Song location slider*/
-#songSlider{
 
-}
-
-/*Track progress bar*/
-#trackProgress{
-
-}
-
-/* Play button */
+/* Bouton lecture */
 input[type=checkbox] {
 	visibility: hidden;
 }
@@ -136,7 +131,7 @@ input[type=checkbox] {
 }
 
 
-/* Mute button */
+/* Bouton mute */
 .volumeMuter {	
 	position: relative;
 }
@@ -199,7 +194,7 @@ input[type=checkbox] {
 }
 
 
-/* Song Slider */
+/* Barre de progression */
 .songSlider input[type=range] {
     height:20px;
     width:100%;

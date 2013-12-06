@@ -1,24 +1,21 @@
-@charset "utf-8";
-/* Components of Sonolyzer webpage */
+@charset "ISO-8859-1";
+/* Style des composants de l'application Sonolyzer (checkbox, search form, range) */
+/* Webkit : Chromium, Chrome, Safari & Opera 15+ */
+/* Moz : Gecko / Firefox */
+/* MS : Internet Explorer */
+/* O : Opera jusqu'a v12 */
 
-/* Search form */
+/************ Champ de recherche / Search form ************/
 input {
 	outline: none;
 }
 
-input[type=search] {
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	font-family: inherit;
-	font-size: 100%;
-	border:none;
-}
-
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
+/* Style search form pour navigateur webkit */
+input::-webkit-search-decoration, input::-webkit-search-cancel-button {
 	display: none; 
 }
 
+/* Style du champ de recherche */
 input[type=search] {
 	background: url(../img/search.png) no-repeat right;
 	padding: 6px 10px;
@@ -34,15 +31,21 @@ input[type=search] {
 	cursor: pointer;
 	float:right;
 	border:2px solid white;
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
 }
 
 input:-moz-placeholder {
 	color: transparent;
 }
+
 input::-webkit-input-placeholder {
 	color: #transparent;
 }
 
+/* Style au survol de la souris */
 input[type=search]:hover {
 	width: 180px;
 	padding-right: 32px;
@@ -53,7 +56,7 @@ input[type=search]:hover {
 }
 
 
-/* Switch filtres */
+/************ Switch filtres ************/
 .switch {
     position: relative;
 	width: 35px;
@@ -83,6 +86,7 @@ input[type=search]:hover {
 	transition: margin 0.3s ease-in 0s;
 }
 
+/* Gestion des effets pur CSS3 */
 .switch-inner:before, .switch-inner:after {
     float: left;
 	width: 50%;
@@ -129,9 +133,9 @@ input[type=search]:hover {
 }
 
 
-/* Checkbox */
+/************ Checkbox ************/
 input[type=checkbox] {
-	visibility: hidden;
+	visibility: hidden; /* Pour personnaliser completement les checkbox */
 }
 
 .activeFilter {
@@ -224,6 +228,7 @@ input[type=range] {
 	padding:0px;
 }
 
+/* Style des ranges sous webkit */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance:none;
     background-color: white;
@@ -233,6 +238,7 @@ input[type="range"]::-webkit-slider-thumb {
 	border-radius:2px;
 }
 
+/* Style des ranges sous mozilla */
 input[type="range"]::-moz-range-thumb {
 	-moz-appearance:none;
     background-color: none;
