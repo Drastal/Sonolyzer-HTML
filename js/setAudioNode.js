@@ -54,6 +54,7 @@ function setupAudioNodes() {
     analyser.connect(javascriptNode);
 
     setUpVoiceFilters();
+    setUpSpecificFilters();
     //relie tabVoiceFilter à une entrée et a une sortie
     console.log(tabVoiceFilter.length);
     sourceNode.connect(tabVoiceFilter[0]);
