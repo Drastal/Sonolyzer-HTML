@@ -8,10 +8,9 @@ var ctx = c.getContext("2d");
 // offset, since the gradient is calculated based on
 // the canvas, not the specific element we draw
 var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-gradient.addColorStop(1, '#000000');
-gradient.addColorStop(0.75, '#00ffff');
-gradient.addColorStop(0.25, '#00ff00');
-gradient.addColorStop(0, '#ffffff');
+gradient.addColorStop(1, '#00ff88');
+gradient.addColorStop(0.5, '#00bfff');
+gradient.addColorStop(0, '#8800ff');
 
 // log if an error occurs
 function onError(e) {
@@ -28,7 +27,7 @@ javascriptNode.onaudioprocess = function() {
     analyser.getByteFrequencyData(array);
 
     // clear the current state
-    ctx.clearRect(0, 0, 1000, 325);
+    ctx.clearRect(0, 0, document.getElementById("canvas").width, 300);
 
     // set the fill style
     ctx.fillStyle = gradient;
@@ -38,10 +37,13 @@ javascriptNode.onaudioprocess = function() {
 
 //tableau des valeurs du spectre
 function drawSpectrum(array) {
-    for (var i = 0; i < (array.length); i++) {
-        var value = array[i];
-
-        ctx.fillRect(i * 5, 325 - value, 3, 325);
-        //  console.log([i,value])
+	//var frequencySelect=0;
+    for (var i = 0; i < (array.length); i++) { // ****frequencySelect****
+		//frequencySelect=frequencySelect+3;
+        //var value = array[frequencySelect]*1.1;//Affiche une frequence sur 3, agrandie
+		var value = array[i];
+		
+        ctx.fillRect(i * 5, 300 - value, 4, 300);
+        //console.log([i,value])
     }
 }
