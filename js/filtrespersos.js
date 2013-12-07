@@ -8,9 +8,9 @@
 function setUpSpecificFilters(){
 var filtre_passe_haut;
 filtre_passe_haut = context.createBiquadFilter();
-    filtre_passe_haut.type=filtre_passe_bas.HIGHPASS;
+    filtre_passe_haut.type=filtre_passe_haut.HIGHPASS;
     filtre_passe_haut.frequency.value = 0;
-    filtre_passe_haut.Q = 0.0001;
+
     tabSpecificFilters[0] = filtre_passe_haut;
 
 
@@ -19,8 +19,8 @@ filtre_passe_haut = context.createBiquadFilter();
 var filtre_passe_bas; 
 filtre_passe_bas = context.createBiquadFilter();
     filtre_passe_bas.type = filtre_passe_bas.LOWPASS;
-    filtre_passe_bas.frequency.value = 0;
-    filtre_passe_bas.Q = 0.0001;
+    filtre_passe_bas.frequency.value = 100000;
+    
     tabSpecificFilters[1] = filtre_passe_bas;
 
     
@@ -41,7 +41,7 @@ var filtre_coupe_bande;
 filtre_coupe_bande = context.createBiquadFilter();
     filtre_coupe_bande.type = filtre_coupe_bande.NOTCH;
     filtre_coupe_bande.frequency.value = 0;
-    filtre_coupe_bande.Q = 0.0001;
+    filtre_coupe_bande.Q = 100;
     tabSpecificFilters[3] = filtre_coupe_bande;
     
  //Connection successive des différents filtres
@@ -91,19 +91,23 @@ var rangeMultiSup = document.getElementById("rangeHighBand");//2ème fréquence
     //Case passe-bande ou coupe-bande cochée
     if(checkMulti.checked === true){
         if(typeMulti.checked === false){//passe-bande activée
+			console.log(rangeMultiInf.value +"    "+rangeMultiSup.value);
+			
             tabSpecificFilters[2].frequency.value = (rangeMultiInf.value+rangeMultiSup.value)/2;
-            tabSpecificFilters[2].Q = Math.round(((rangeMultiInf.value+rangeMultiSup.value)/2)/2980*10)/10;
+            tabSpecificFilters[2].Q = tabSpecificFilters[2].frequency.value/(rangeMultiInf.value+rangeMultiSup.value);
+			console.log(tabSpecificFilters[2].frequency.value/(rangeMultiInf.value+rangeMultiSup.value));
         }else{//coupe-bande activée
+		console.log(rangeMultiInf.value +"    "+rangeMultiSup.value);
             tabSpecificFilters[3].frequency.value = (rangeMultiInf.value+rangeMultiSup.value)/2;
-            tabSpecificFilters[3].Q = Math.round(((rangeMultiInf.value+rangeMultiSup.value)/2)/2980*10)/10;
+            tabSpecificFilters[3].Q = tabSpecificFilters[3].frequency.value/(rangeMultiInf.value+rangeMultiSup.value);
         }
     }else{ //Case décochée
         if(checkMulti.checked !== true){//passe-bande désactivée
             tabSpecificFilters[2].frequency.value = 1510;
             tabSpecificFilters[2].Q = 0.0001;
         }else{//coupe-bande désctivée
-            tabSpecificFilters[3].frequency.value = 1510;
-            tabSpecificFilters[3].Q = 0.0001;
+            tabSpecificFilters[3].frequency.value = 0;
+            tabSpecificFilters[3].Q = 1000;
         }
     }
 }

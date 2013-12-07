@@ -8,6 +8,7 @@
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen"> 
         <link href="css/player.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         
     </head>
     <body>
@@ -269,10 +270,24 @@
 				<canvas id="canvas" width="1000" height="325" style="display: block;margin-right: auto; margin-left: auto;">Spectre du signal audio</canvas>		
                     </section>
                     
-                    <section class="platine">
+                     <section class="platine">
                         <p>
                         	Platine
-                        </p>
+                        
+							<div id="eq" >
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+								<span style="height:100px ; float:left; margin:15px"></span>
+							</div>
+							</p>
                     </section>
                 </aside>
             </div>
@@ -283,23 +298,34 @@
 		</footer>
         
         <!-- Scripts JavaScript -->
+		
+		<script src="js/equalizerSetUp.js"></script>
          <!-- Filtres de la voix-->
         <script type="text/javascript" src="js/voiceFilter.js"></script>
         <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
         
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
-        <script type="text/javascript" src="js/setAudioNode.js"></script>
+       
         
            
         
-            <!-- Filtres du bruit-->
-        <script type="text/javascript" src="js/noiseFilter.js"></script>
+         
         
-            <!-- Spectre-->
-        <script type="text/javascript" src="js/spectrum.js"></script>
+          
         
             <!-- Filtres Persos-->
         <script type="text/javascript" src="js/filtrespersos.js"></script>
+		
+		 <script type="text/javascript" src="js/setAudioNode.js"></script>
+		   <!-- Spectre-->
+        <script type="text/javascript" src="js/spectrum.js"></script>
+		    <!-- Filtres du bruit-->
+        <script type="text/javascript" src="js/noiseFilter.js"></script>
+		
+		<!-- Equalizer-->
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script src="js/equalizer.js"></script>
 	</body>
 </html>

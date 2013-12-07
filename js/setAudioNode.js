@@ -17,6 +17,7 @@ var sourceNode;
 var analyser;
 var javascriptNode;
 var tabSpecificFilters = new Array();
+var tabFilters = new Array();
 
 //récupérer le son (balise audio)
 var audio = document.getElementById("song");
@@ -55,11 +56,13 @@ function setupAudioNodes() {
 
     setUpVoiceFilters();
     setUpSpecificFilters();
+	setUpEqualizerFilters();
     //relie tabVoiceFilter à une entrée et a une sortie
-    console.log(tabVoiceFilter.length);
-    sourceNode.connect(tabVoiceFilter[0]);
-    tabVoiceFilter[tabVoiceFilter.length-1].connect(analyser);
-    tabVoiceFilter[tabVoiceFilter.length-1].connect(context.destination);
+    sourceNode.connect(tabSpecificFilters[0]);
+	tabSpecificFilters[tabSpecificFilters.length-1].connect(tabVoiceFilter[0]);
+    tabVoiceFilter[tabVoiceFilter.length-1].connect(tabFilters[0]);
+	tabFilters[tabFilters.length-1].connect(analyser);
+	tabFilters[tabFilters.length-1].connect(context.destination);
     
     
     //filtre de test

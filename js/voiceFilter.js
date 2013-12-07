@@ -16,7 +16,7 @@ var frequenceVoiceReduceFilter =240.0;
 var QVoiceReduceFilter =0.8;
 var gainVoiceReduceFilter =-40;
 var frequenceVoiceBassFilter =240.0;
-var QvoiceBassFilter =0.8;
+var QVoiceBassFilter =0.8;
 var gainvoiceBassFilter =0;
 var frequenceVoiceSharpFilter =240.0;
 var QvoiceSharpFilter =0.8;
@@ -115,12 +115,12 @@ function voice_filter(){
          console.log("passe-bande voix grave activé");  
         tabVoiceFilter[2].frequency.value =frequenceVoiceBassFilter;
         tabVoiceFilter[2].Q = QVoiceBassFilter; 
-        tabVoiceFilter[2].gain.value = gainVoiceBassFilter; 
+        tabVoiceFilter[2].gain.value = gainvoiceBassFilter; 
        }else{                                               //passe-bande voix aigue activé
          console.log("passe-bande voix aigue activé");  
         tabVoiceFilter[3].frequency.value =frequenceVoiceSharpFilter;
         tabVoiceFilter[3].Q = QvoiceSharpFilter; 
-        tabVoiceFilter[3].gain.value = gainVoiceSharpFilter; 
+        tabVoiceFilter[3].gain.value = gainvoiceSharpFilter; 
        }
          
     }else{ //case Passe Bande décochée
