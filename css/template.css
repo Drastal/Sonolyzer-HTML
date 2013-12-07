@@ -145,12 +145,23 @@ section.player {
 }
 
 section.spectrum {
-	height:325px;
-    padding:20px;
+	height:300px;
 }
 
 section.platine {
-	height:150px;
+	height:120px;
+}
+
+/* Rotation des ranges pour la platine */
+div.gainRange {
+	width:120px;
+	height:100%;
+	-webkit-transform:rotate(-90deg);       
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    transform:rotate(-90deg);
+    z-index: 0;
 }
 
 /* Style des blocs du module ddes filtres */
