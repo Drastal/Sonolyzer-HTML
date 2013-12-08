@@ -1,6 +1,6 @@
 <?php
 include('php/iceCastFileLoad.php');
-
+include('php/historyManager.php');
 ?>
 <!doctype html>
 <html>
@@ -12,19 +12,19 @@ include('php/iceCastFileLoad.php');
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen"> 
         <link href="css/player.css" rel="stylesheet" media="screen">
-        
+
     </head>
     <body>
         <header>
             <div class="appName">
-                <h1><a href="index.php">Sonolyzer</a></h1>
+                <h1><a href="index.php"> Sonolyzer </a></h1>
             </div>
-            
+
             <a href="#help" class="icon"><img src="img/help.png" /></a>
             <div id="help" class="modal">
                 <div class="popup">
                     <div class="header">
-                            <h2>Aide</h2>
+                        <h2>Aide</h2>
                     </div>
                     <div class="content">
                         <h3>&Agrave; propos</h3>
@@ -44,7 +44,7 @@ include('php/iceCastFileLoad.php');
                 </div>
                 <div class="overlay"></div>
             </div>
-            
+
             <a href="#settings" class="icon"><img src="img/settings.png" /></a>
             <div id="settings" class="modal">
                 <div class="popup">
@@ -65,28 +65,37 @@ include('php/iceCastFileLoad.php');
             </div>
         </header>
 
-		<div class="main">
+        <div class="main">
             <div class="fileManagerBand">
                 <aside class="left">
-                    <form id="searchFile" class="icon" method="post" action="index.php">
-                        <input type="search" name="fileSearch" placeholder="     Source sonore"/>
+                    <form id="selectFile" class="icon" method="post" action="index.php" >
+
+                        <input type="file" name="fileSelection" id="fileSelection" hidden>
+                        <input type="submit" hidden/>
+                    
+                        <input type="search" name="fileSearch" placeholder="     Source sonore" ondblclick="selectFile();"/>
+
                         <input type="submit" hidden/>
                     </form>
+                    
                     <a href="#" class="icon"><img src="img/reload.png" /></a>
                 </aside>
                 <aside class="right">
-                    <a href="#"><p class="address"><?php echo $address?></p></a>
+                    <a href="#"><p class="address"><?php echo $address ?> </p></a>
+                    <ul>
+                        <?php getHistory() ?>
+                    </ul>
                 </aside>
             </div>
 
-			<div class="panels">
+            <div class="panels">
                 <aside class="left">
                     <section class="filters">
                         <div class="filterType">
                             <h3 class="filterTitle">Voix</h3>
                             <div class="doubleFilter">
-                            	<span class="choiceLeft">
-                                	Intensifier
+                                <span class="choiceLeft">
+                                    Intensifier
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
@@ -98,7 +107,7 @@ include('php/iceCastFileLoad.php');
                                     </div>
                                 </span>
                                 <span class="choiceRight">
-                                	R&eacute;duire
+                                    R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
                                     <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_filter()"/>
@@ -106,8 +115,8 @@ include('php/iceCastFileLoad.php');
                                 </span>
                             </div>
                             <div class="doubleFilter">
-                            	<span class="choiceLeft">
-                                	Aigues
+                                <span class="choiceLeft">
+                                    Aigues
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
@@ -119,7 +128,7 @@ include('php/iceCastFileLoad.php');
                                     </div>
                                 </span>
                                 <span class="choiceRight">
-                                	Graves
+                                    Graves
                                 </span>
                                 <span class="activeFilter">
                                     <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_filter()" />
@@ -130,8 +139,8 @@ include('php/iceCastFileLoad.php');
                         <div class="filterNoise">
                             <h3 class="filterTitle">R&eacute;duction de bruit</h3>
                             <div class="singleFilter">
-                            	<span class="label">
-                                	Interf&eacute;rences GSM
+                                <span class="label">
+                                    Interf&eacute;rences GSM
                                 </span>
                                 <span class="checkBox">
                                     <span class="activeFilter">
@@ -140,7 +149,7 @@ include('php/iceCastFileLoad.php');
                                     </span>
                                 </span>
                             </div>
-                            
+
                         </div>
                         <div class="filterType">
                             <h3 class="filterTitle">Personnalis&eacute;s</h3>
@@ -161,7 +170,7 @@ include('php/iceCastFileLoad.php');
                                     Passe-bas
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this, 'activePerso')" />
                                     <label for="activePass"></label>
                                 </span>
                             </div>
@@ -171,9 +180,9 @@ include('php/iceCastFileLoad.php');
                                     <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtremono()">
 
                                     <span class="smallerToRight">
-                                    	f<sub>C</sub> = 
+                                        f<sub>C</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangePass">?</output>
+                                            <output name="amount" for="rangePass">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -196,7 +205,7 @@ include('php/iceCastFileLoad.php');
                                     Coupe-bande
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso')" />
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this, 'activePerso')" />
                                     <label for="activeBand"></label>
                                 </span>
                             </div>
@@ -204,9 +213,9 @@ include('php/iceCastFileLoad.php');
                                 <form oninput="amount.value=rangeLowBand.value">
                                     <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="3000" step="10">
                                     <span class="smallerToRight">
-                                    	f<sub>Cb</sub> = 
+                                        f<sub>Cb</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangeLowBand">?</output>
+                                            <output name="amount" for="rangeLowBand">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -216,9 +225,9 @@ include('php/iceCastFileLoad.php');
                                 <form oninput="amount.value=rangeHighBand.value">
                                     <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="3000" step="10">
                                     <span class="smallerToRight">
-                                    	f<sub>Ch</sub> = 
+                                        f<sub>Ch</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangeHighBand">?</output>
+                                            <output name="amount" for="rangeHighBand">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -228,11 +237,11 @@ include('php/iceCastFileLoad.php');
                     </section>
                     <section class="export">
                         <a href="#"><p>
-                            EXPORT
-                        </p></a>
+                                EXPORT
+                            </p></a>
                     </section>
                 </aside>
-                
+
                 <aside class="right">
                     <section class="player">
                         <span class="controls">
@@ -263,48 +272,51 @@ include('php/iceCastFileLoad.php');
                             <br />
                             <label id="totalTime"></label>
                         </span>
-                    	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
-                        	<source type="audio/mpeg" <?php echo "src = ".$sound ?>>
-                            <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
-                            <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+                        <audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
+                            <source type="audio/mpeg" <?php echo "src = " . $sound ?>>
+                        <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
+                        <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
                         </audio>
                     </section>
-                    
+
                     <section class="spectrum">      
-				<canvas id="canvas" width="1000" height="325" style="display: block;margin-right: auto; margin-left: auto;">Spectre du signal audio</canvas>		
+                        <canvas id="canvas" width="1000" height="325" style="display: block;margin-right: auto; margin-left: auto;">Spectre du signal audio</canvas>		
                     </section>
-                    
+
                     <section class="platine">
                         <p>
-                        	Platine
+                            Platine
                         </p>
                     </section>
                 </aside>
             </div>
-		</div>
+        </div>
 
-		<footer>
-			<!-- Contenu du footer -->
-		</footer>
-        
+        <footer>
+            <!-- Contenu du footer -->
+        </footer>
+
         <!-- Scripts JavaScript -->
-         <!-- Filtres de la voix-->
+        <!-- Filtres de la voix-->
         <script type="text/javascript" src="js/voiceFilter.js"></script>
         <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
-        
+
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
         <script type="text/javascript" src="js/setAudioNode.js"></script>
-        
-           
-        
-            <!-- Filtres du bruit-->
+
+
+
+        <!-- Filtres du bruit-->
         <script type="text/javascript" src="js/noiseFilter.js"></script>
-        
-            <!-- Spectre-->
+
+        <!-- Spectre-->
         <script type="text/javascript" src="js/spectrum.js"></script>
-        
-            <!-- Filtres Persos-->
-        <<script type="text/javascript" src="js/filtrespersos.js"></script>
-	</body>
+
+        <!-- Filtres Persos-->
+        <script type="text/javascript" src="js/filtrespersos.js"></script>
+
+        <!-- Sélection de fichiers-->
+        <script type="text/javascript" src="js/fileSelection.js"></script>
+    </body>
 </html>
