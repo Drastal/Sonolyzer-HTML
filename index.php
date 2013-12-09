@@ -1,5 +1,6 @@
 <?php
 include('php/iceCastFileLoad.php');
+include('php/fileLoad.php');
 include('php/historyManager.php');
 ?>
 <!doctype html>
@@ -68,16 +69,18 @@ include('php/historyManager.php');
         <div class="main">
             <div class="fileManagerBand">
                 <aside class="left">
-                    <form id="selectFile" class="icon" method="post" action="index.php" >
+                    <form action="index.php" method="post" enctype="multipart/form-data">
 
-                        <input type="file" name="fileSelection" id="fileSelection" hidden>
-                        <input type="submit" hidden/>
+                        <input type="file" name="file" id="file" hidden>
+                        <input type="submit" />
+                    </form>
+                    <form id="selectFile" class="icon" method="post" action="index.php" >
                     
                         <input type="search" name="fileSearch" placeholder="     Source sonore" ondblclick="selectFile();"/>
 
-                        <input type="submit" hidden/>
+                        <input type="submit" hidden />
                     </form>
-                    
+
                     <a href="#" class="icon"><img src="img/reload.png" /></a>
                 </aside>
                 <aside class="right">

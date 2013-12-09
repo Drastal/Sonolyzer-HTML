@@ -7,15 +7,17 @@ chmod('txt/fileList.txt', 0777);
 function getHistory() {
     if (isset($_POST['fileSearch'])) {
         updateHistory(htmlspecialchars($_POST['fileSearch']));
-        //Troncature de l'historique à la bonne longueur
-        truncateHistory();
+    } else if (isset($_FILES["file"]["name"])) {
+        updateHistory("upload/" . $_FILES["file"]["name"]);
+    }
+    //Troncature de l'historique à la bonne longueur
+    truncateHistory();
 
-        $lines = file('txt/fileList.txt');
+    $lines = file('txt/fileList.txt');
 
-        //Affichage de chaque ligne du fichier
-        foreach ($lines as $line) {
-            echo "<li>" . $line . "</li>";
-        }
+    //Affichage de chaque ligne du fichier
+    foreach ($lines as $line) {
+        echo "<li>" . $line . "</li>";
     }
 }
 
@@ -24,8 +26,6 @@ function updateHistory($new_entry) {
     $oldContents = file_get_contents('txt/fileList.txt');
 
     $newmsg = $new_entry . "\n" . $oldContents;
-//    fseek($file, 0); // this line will set the position to the beginning of the file
-//    fwrite($file, $new_entry);
     file_put_contents('txt/fileList.txt', $newmsg);
     fclose($file);
 }
@@ -54,4 +54,5 @@ function truncateHistory() {
     ftruncate($file, $new_length);
     fclose($file);
 }
+
 ?>
