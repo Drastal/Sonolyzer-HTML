@@ -26,17 +26,19 @@ javascriptNode.onaudioprocess = function() {
     var array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
 
+	// resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCanvas, false);    
+    resizeCanvas(array);
+}
+
+//tableau des valeurs du spectre
+function drawSpectrum(array) {
     // clear the current state
     ctx.clearRect(0, 0, document.getElementById("canvas").width, 300);
 
     // set the fill style
     ctx.fillStyle = gradient;
-    drawSpectrum(array);
-
-}
-
-//tableau des valeurs du spectre
-function drawSpectrum(array) {
+	
 	//var frequencySelect=0;
     for (var i = 0; i < (array.length); i++) { // ****frequencySelect****
 		//frequencySelect=frequencySelect+3;
@@ -46,4 +48,13 @@ function drawSpectrum(array) {
         ctx.fillRect(i * 5, 300 - value, 4, 300);
         //console.log([i,value])
     }
+}
+
+function resizeCanvas(array) {
+	canvas.style.width='100%';
+	canvas.style.height='100%';
+	canvas.width  = canvas.offsetWidth;
+	canvas.height = canvas.offsetHeight;
+
+    drawSpectrum(array);
 }

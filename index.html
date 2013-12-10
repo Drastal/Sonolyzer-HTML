@@ -260,18 +260,18 @@
                             <label id="totalTime"></label>
                         </span>
                     	<audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
-                        	<source type="audio/mpeg" src="sounds/file_gsm.wav">
+                        	<!--<source type="audio/mpeg" src="sounds/file_gsm.wav">-->
                             <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
-                            <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+                            <source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">
                         </audio>
                     </section>
                     
                     <section class="spectrum">      
-						<canvas id="canvas" width="700px" height="300px" style="display: block;">Spectre du signal audio</canvas>
+						<canvas id="canvas">Spectre du signal audio</canvas>
                     </section>
                     
                      <section class="platine">
-                        <div id="eq" >
+                        <!--<div id="eq" >
                             <span style="height:100px ; float:left; margin:15px"></span>
                             <span style="height:100px ; float:left; margin:15px"></span>
                             <span style="height:100px ; float:left; margin:15px"></span>
@@ -283,8 +283,8 @@
                             <span style="height:100px ; float:left; margin:15px"></span>
                             <span style="height:100px ; float:left; margin:15px"></span>
                             <span style="height:100px ; float:left; margin:15px"></span>
-                        </div>
-                        <!--<div class="gainRange">
+                        </div>-->
+                        <div class="gainRange">
                         	<input type="range" class="vertical" id="gain1" name="gain1" value="50" min="0" max="100" step="10">
                             <input type="range" class="vertical" id="gain2" name="gain2" value="50" min="0" max="100" step="10">
                             <input type="range" class="vertical" id="gain3" name="gain3" value="50" min="0" max="100" step="10">
@@ -296,7 +296,7 @@
                             <input type="range" class="vertical" id="gain9" name="gain9" value="50" min="0" max="100" step="10">
                             <input type="range" class="vertical" id="gain10" name="gain10" value="50" min="0" max="100" step="10">
                             <input type="range" class="vertical" id="gain11" name="gain11" value="50" min="0" max="100" step="10">
-                        </div>-->
+                        </div>
                     </section>
                 </aside>
             </div>
