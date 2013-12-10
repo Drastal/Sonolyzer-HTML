@@ -146,10 +146,15 @@ section.player {
 
 section.spectrum {
 	height:300px;
+	position:relative;
 }
 
 section.platine {
 	height:120px;
+}
+
+section.spectrum canvas {
+	display:block;
 }
 
 /* Rotation des ranges pour la platine */
