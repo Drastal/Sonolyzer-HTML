@@ -249,3 +249,9 @@ input[type="range"]::-moz-range-thumb {
 	cursor:pointer;
 	border-radius:2px;
 }
+
+input[type="range"].vertical {
+	display:inline-block;
+	width:100px;
+	margin-top:50px;
+}

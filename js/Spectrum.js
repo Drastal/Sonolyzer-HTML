@@ -8,10 +8,9 @@ var ctx = c.getContext("2d");
 // offset, since the gradient is calculated based on
 // the canvas, not the specific element we draw
 var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-gradient.addColorStop(1, '#000000');
-gradient.addColorStop(0.75, '#00ffff');
-gradient.addColorStop(0.25, '#00ff00');
-gradient.addColorStop(0, '#ffffff');
+gradient.addColorStop(1, '#00ff88');
+gradient.addColorStop(0.5, '#00bfff');
+gradient.addColorStop(0, '#8800ff');
 
 // log if an error occurs
 function onError(e) {
@@ -26,22 +25,41 @@ javascriptNode.onaudioprocess = function() {
     // get the average for the first channel
     var array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
-
-    // clear the current state
-    ctx.clearRect(0, 0, 1000, 325);
-
-    // set the fill style
-    ctx.fillStyle = gradient;
-    drawSpectrum(array);
-
+	
+	// resize the canvas to fill browser window dynamically
+	window.addEventListener('resize', resizeCanvas, false);    
+	resizeCanvas(array);
 }
 
 //tableau des valeurs du spectre
 function drawSpectrum(array) {
-    for (var i = 0; i < (array.length); i++) {
-        var value = array[i];
+    // clear the current state
+    ctx.clearRect(0, 0, document.getElementById("canvas").width, 300);
 
-        ctx.fillRect(i * 5, 325 - value, 3, 325);
+    // set the fill style
+    ctx.fillStyle = gradient;
+
+	var y =0;
+	var i;
+    for ( i = 1; Math.exp(i)<(array.length); ) {
+	
+        var value = array[Math.floor(Math.exp(i))];
+		y=y+10;
+		i = i+0.07;
+		
+        ctx.fillRect(y, (300 - value), 9, 300);
         //  console.log([i,value])
     }
+	//console.log(Math.exp(i));
+	
 }
+
+function resizeCanvas(array) {
+	canvas.style.width='100%';
+	canvas.style.height='100%';
+	canvas.width  = canvas.offsetWidth;
+	canvas.height = canvas.offsetHeight;
+
+	drawSpectrum(array);
+	console.log(Math.exp(i));
+ }

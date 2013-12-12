@@ -162,7 +162,7 @@ include('php/historyManager.php');
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter">
+                                        <input type="checkbox" name="passeFilter" class="switch-checkbox" id="passeFilter" onchange="filtre_perso()">
                                         <label class="switch-label" for="passeFilter">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -173,14 +173,16 @@ include('php/historyManager.php');
                                     Passe-bas
                                 </span>
                                 <span class="activeFilter">
-                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this, 'activePerso')" />
+
+                                    <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
+
                                     <label for="activePass"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangePass.value">
 
-                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtremono()">
+                                    <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtre_perso()">
 
                                     <span class="smallerToRight">
                                         f<sub>C</sub> = 
@@ -197,7 +199,7 @@ include('php/historyManager.php');
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
-                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter">
+                                        <input type="checkbox" name="bandeFilter" class="switch-checkbox" id="bandeFilter" onChange="filtre_perso()">
                                         <label class="switch-label" for="bandeFilter">
                                             <div class="switch-inner"></div>
                                             <div class="switch-switch"></div>
@@ -208,13 +210,17 @@ include('php/historyManager.php');
                                     Coupe-bande
                                 </span>
                                 <span class="activeFilter">
+<<<<<<< HEAD:index.php
                                     <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this, 'activePerso')" />
+=======
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
+>>>>>>> master:index.html
                                     <label for="activeBand"></label>
                                 </span>
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeLowBand.value">
-                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="3000" step="10">
+                                    <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="5000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
                                         f<sub>Cb</sub> = 
                                         <div class="output">
@@ -226,7 +232,7 @@ include('php/historyManager.php');
                             </div>
                             <div class="frequencyRange">
                                 <form oninput="amount.value=rangeHighBand.value">
-                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="3000" step="10">
+                                    <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="5000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
                                         f<sub>Ch</sub> = 
                                         <div class="output">
@@ -275,14 +281,22 @@ include('php/historyManager.php');
                             <br />
                             <label id="totalTime"></label>
                         </span>
+<<<<<<< HEAD:index.php
                         <audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
                             <source type="audio/mpeg" <?php echo "src = " . $sound ?>>
                         <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
                         <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+=======
+                    	<audio id="song" preload="auto" loop>
+                        	<source type="audio/mpeg" src="sounds/file_gsm.wav">
+                            <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
+                            <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+>>>>>>> master:index.html
                         </audio>
                     </section>
 
                     <section class="spectrum">      
+<<<<<<< HEAD:index.php
                         <canvas id="canvas" width="1000" height="325" style="display: block;margin-right: auto; margin-left: auto;">Spectre du signal audio</canvas>		
                     </section>
 
@@ -290,6 +304,26 @@ include('php/historyManager.php');
                         <p>
                             Platine
                         </p>
+=======
+						<canvas id="canvas">Spectre du signal audio</canvas>
+                    </section>
+                    
+                     <section class="platine">
+                     	<a href="javascript:setAllSliderOff()" class="icon"><img src="img/reset.png" /></a>
+						<div class="gainRange">
+                        	<input type="range" class="vertical" id="gain1" name="gain1" value="50" min="0" max="100" step="1" onChange="changeFilterGain(0,this.value)">
+                            <input type="range" class="vertical" id="gain2" name="gain2" value="50" min="0" max="100" step="1" onChange="changeFilterGain(1,this.value)">
+                            <input type="range" class="vertical" id="gain3" name="gain3" value="50" min="0" max="100" step="1" onChange="changeFilterGain(2,this.value)">
+                        	<input type="range" class="vertical" id="gain4" name="gain4" value="50" min="0" max="100" step="1" onChange="changeFilterGain(3,this.value)">
+                            <input type="range" class="vertical" id="gain5" name="gain5" value="50" min="0" max="100" step="1" onChange="changeFilterGain(4,this.value)">
+                            <input type="range" class="vertical" id="gain6" name="gain6" value="50" min="0" max="100" step="1" onChange="changeFilterGain(5,this.value)">
+                        	<input type="range" class="vertical" id="gain7" name="gain7" value="50" min="0" max="100" step="1" onChange="changeFilterGain(6,this.value)">
+                            <input type="range" class="vertical" id="gain8" name="gain8" value="50" min="0" max="100" step="1" onChange="changeFilterGain(7,this.value)">
+                            <input type="range" class="vertical" id="gain9" name="gain9" value="50" min="0" max="100" step="1" onChange="changeFilterGain(8,this.value)">
+                            <input type="range" class="vertical" id="gain10" name="gain10" value="50" min="0" max="100" step="1" onChange="changeFilterGain(9,this.value)">
+                            <input type="range" class="vertical" id="gain11" name="gain11" value="50" min="0" max="100" step="1" onChange="changeFilterGain(10,this.value)">
+                        </div>
+>>>>>>> master:index.html
                     </section>
                 </aside>
             </div>
@@ -300,6 +334,7 @@ include('php/historyManager.php');
         </footer>
 
         <!-- Scripts JavaScript -->
+<<<<<<< HEAD:index.php
         <!-- Filtres de la voix-->
         <script type="text/javascript" src="js/voiceFilter.js"></script>
         <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
@@ -322,4 +357,31 @@ include('php/historyManager.php');
         <!-- Sélection de fichiers-->
         <script type="text/javascript" src="js/fileSelection.js"></script>
     </body>
+=======
+		<script src="js/equalizer.js"></script>
+		<script src="js/equalizerSetUp.js"></script>
+         <!-- Filtres de la voix-->
+        <script type="text/javascript" src="js/voiceFilter.js"></script>
+        <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+		  <!-- Filtres du bruit-->
+        <script type="text/javascript" src="js/noiseFilter.js"></script>
+        
+        <script type="text/javascript" src="js/checkboxChecker.js"></script>
+        <script type="text/javascript" src="js/playerControls.js"></script>
+       
+        
+            <!-- Filtres Persos-->
+        <script type="text/javascript" src="js/filtrespersos.js"></script>
+		
+		 <script type="text/javascript" src="js/setAudioNode.js"></script>
+		   <!-- Spectre-->
+        <script type="text/javascript" src="js/spectrum.js"></script>
+		  
+		
+		<!-- Equalizer-->
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+	</body>
+>>>>>>> master:index.html
 </html>

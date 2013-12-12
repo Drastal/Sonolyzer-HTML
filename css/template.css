@@ -16,7 +16,7 @@ sub {
 /* Style du corps principal de la page */
 body {
 	width:auto;
-	min-width:800px;
+	min-width:900px;
 	background-color: black;
 	font-family: 'normal', Century Gothic, sans-serif;
 	font-size:medium;
@@ -145,12 +145,33 @@ section.player {
 }
 
 section.spectrum {
-	height:325px;
-    padding:20px;
+	height:295px;
+	position:relative;
 }
 
 section.platine {
-	height:150px;
+	height:120px;
+}
+
+section.spectrum canvas {
+	display:block;
+}
+
+/* Rotation des ranges pour la platine */
+div.gainRange {
+	width:120px;
+	height:100%;
+	-webkit-transform:rotate(-90deg);       
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    transform:rotate(-90deg);
+    z-index: 0;
+}
+
+section.platine a.icon {
+	float:right;
+	margin-top:40px;
 }
 
 /* Style des blocs du module ddes filtres */
