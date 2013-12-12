@@ -1,23 +1,18 @@
-
-  $(function() {
-   
-    // setup graphic EQ
-	var i=0;
-	console.log("lol");
-    $( "#eq>span" ).each(function() {
-      // read initial values from markup and remove that
-	  console.log("lel");
-      
-	  var id = i;
-      $( this ).empty().slider({
-        value: 50,
-        range: "min",
-        animate: true,
-        orientation: "vertical",
-		slide: function( event, ui ) {
-		changeFilterGain(id,ui.value)
-      }
-      });
-	 i=i+1;
-    });
-  });
+var tabSlider = new Array();
+ function getEQSliders()
+  {
+	for (i = 1 ; i<12 ; i ++ )
+	{
+		tabSlider.push(document.getElementById("gain"+i));
+	}
+  }
+  
+  function setAllSliderOff()
+  {
+	for ( i = 0 ; i< tabSlider.length ; i++ ) 
+	{
+		tabSlider[i].value = 50;
+		changeFilterGain(i,50);
+		
+	}
+  }

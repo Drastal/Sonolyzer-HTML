@@ -25,10 +25,10 @@ javascriptNode.onaudioprocess = function() {
     // get the average for the first channel
     var array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
-
+	
 	// resize the canvas to fill browser window dynamically
-    window.addEventListener('resize', resizeCanvas, false);    
-    resizeCanvas(array);
+	window.addEventListener('resize', resizeCanvas, false);    
+	resizeCanvas(array);
 }
 
 //tableau des valeurs du spectre
@@ -38,16 +38,20 @@ function drawSpectrum(array) {
 
     // set the fill style
     ctx.fillStyle = gradient;
+
+	var y =0;
+	var i;
+    for ( i = 1; Math.exp(i)<(array.length); ) {
 	
-	//var frequencySelect=0;
-    for (var i = 0; i < (array.length); i++) { // ****frequencySelect****
-		//frequencySelect=frequencySelect+3;
-        //var value = array[frequencySelect]*1.1;//Affiche une frequence sur 3, agrandie
-		var value = array[i];
+        var value = array[Math.floor(Math.exp(i))];
+		y=y+10;
+		i = i+0.07;
 		
-        ctx.fillRect(i * 5, 300 - value, 4, 300);
-        //console.log([i,value])
+        ctx.fillRect(y, (300 - value), 9, 300);
+        //  console.log([i,value])
     }
+	//console.log(Math.exp(i));
+	
 }
 
 function resizeCanvas(array) {
@@ -56,5 +60,6 @@ function resizeCanvas(array) {
 	canvas.width  = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
 
-    drawSpectrum(array);
-}
+	drawSpectrum(array);
+	console.log(Math.exp(i));
+ }

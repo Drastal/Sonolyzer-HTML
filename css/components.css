@@ -253,5 +253,5 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"].vertical {
 	display:inline-block;
 	width:100px;
-	margin-top:55px;
+	margin-top:50px;
 }

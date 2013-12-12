@@ -10,7 +10,7 @@
 var context = new webkitAudioContext();
 
 //création tableau de filtres de la voix
-var tabVoiceFilter = new Array ();
+var voiceFilter;
 
 
 var sourceNode;
@@ -47,7 +47,7 @@ function setupAudioNodes() {
     // créer un analyser
     analyser = context.createAnalyser();
     analyser.smoothingTimeConstant = 0.3;
-    analyser.fftSize = 512;
+
 
     // créer une source node
     sourceNode = context.createMediaElementSource(audio);
@@ -57,13 +57,17 @@ function setupAudioNodes() {
     setUpVoiceFilters();
     setUpSpecificFilters();
 	setUpEqualizerFilters();
+	setUpGSMFilter()
+	
+	//whiteNoise();
     //relie tabVoiceFilter à une entrée et a une sortie
-    sourceNode.connect(tabSpecificFilters[0]);
-	tabSpecificFilters[tabSpecificFilters.length-1].connect(tabVoiceFilter[0]);
-    tabVoiceFilter[tabVoiceFilter.length-1].connect(tabFilters[0]);
+     sourceNode.connect(tabSpecificFilters[0]);
+	
+	tabSpecificFilters[tabSpecificFilters.length-1].connect(GSMFilter);
+	GSMFilter.connect(voiceFilter);
+    voiceFilter.connect(tabFilters[0]);
 	tabFilters[tabFilters.length-1].connect(analyser);
 	tabFilters[tabFilters.length-1].connect(context.destination);
-    
     
     //filtre de test
          /*sourceNode.connect(voiceIntensifyFilter);
@@ -78,6 +82,22 @@ function setupAudioNodes() {
          
 }
 
+function whiteNoise()
+				{
+				var bufferSize = 2 * context.sampleRate,
+				noiseBuffer = context.createBuffer(1, bufferSize, context.sampleRate),
+				output = noiseBuffer.getChannelData(0);
+				for (var i = 0; i < bufferSize; i++) {
+					output[i] = Math.random() * 2 - 1;
+				}
+
+				whiteNoise = context.createBufferSource();
+				whiteNoise.buffer = noiseBuffer;
+				whiteNoise.loop = true;
+				whiteNoise.start(0);
+
+				whiteNoise.connect(tabSpecificFilters[0]);
+}
 // log si erreur
 function onError(e) {
     console.log(e);

@@ -26,9 +26,11 @@
 					} 
 					filter=context.createBiquadFilter();
 					filter.type=filter.LOWPASS;
-					filter.frequency.value=10000;
+					filter.frequency.value=30000;
 					tabFilters[tabFilters.length-1].connect(filter);
 					tabFilters.push(filter);
+					 getEQSliders();
+					
 				
 				
 				}
