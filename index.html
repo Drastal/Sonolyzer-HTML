@@ -8,7 +8,6 @@
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen"> 
         <link href="css/player.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         
     </head>
     <body>
@@ -271,10 +270,8 @@
                     </section>
                     
                      <section class="platine">
-                        <p>
-                        	Platine
-                        <input type="button" value="lel"  text="reset"onClick="setAllSliderOff()">
-							<div class="gainRange">
+                     	<a href="javascript:setAllSliderOff()" class="icon"><img src="img/reset.png" /></a>
+						<div class="gainRange">
                         	<input type="range" class="vertical" id="gain1" name="gain1" value="50" min="0" max="100" step="1" onChange="changeFilterGain(0,this.value)">
                             <input type="range" class="vertical" id="gain2" name="gain2" value="50" min="0" max="100" step="1" onChange="changeFilterGain(1,this.value)">
                             <input type="range" class="vertical" id="gain3" name="gain3" value="50" min="0" max="100" step="1" onChange="changeFilterGain(2,this.value)">
@@ -287,7 +284,6 @@
                             <input type="range" class="vertical" id="gain10" name="gain10" value="50" min="0" max="100" step="1" onChange="changeFilterGain(9,this.value)">
                             <input type="range" class="vertical" id="gain11" name="gain11" value="50" min="0" max="100" step="1" onChange="changeFilterGain(10,this.value)">
                         </div>
-							</p>
                     </section>
                 </aside>
             </div>
@@ -309,12 +305,6 @@
         <script type="text/javascript" src="js/checkboxChecker.js"></script>
         <script type="text/javascript" src="js/playerControls.js"></script>
        
-        
-           
-        
-         
-        
-          
         
             <!-- Filtres Persos-->
         <script type="text/javascript" src="js/filtrespersos.js"></script>

@@ -5,8 +5,8 @@ var tabSlider = new Array();
 	{
 		tabSlider.push(document.getElementById("gain"+i));
 	}
-  
   }
+  
   function setAllSliderOff()
   {
 	for ( i = 0 ; i< tabSlider.length ; i++ ) 
@@ -15,5 +15,4 @@ var tabSlider = new Array();
 		changeFilterGain(i,50);
 		
 	}
-		
   }
