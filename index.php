@@ -69,19 +69,16 @@ include('php/historyManager.php');
         <div class="main">
             <div class="fileManagerBand">
                 <aside class="left">
-                    <form action="index.php" method="post" enctype="multipart/form-data">
-
-                        <input type="file" name="file" id="file" hidden>
-                        <input type="submit" />
+                    <form id="browseFile" action="index.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" hidden onChange="submitFile()"/>
+                        <input id="validate" type="submit" hidden/>
                     </form>
-                    <form id="selectFile" class="icon" method="post" action="index.php" >
-
-                        <input type="search" name="fileSearch" placeholder="     Source sonore" ondblclick="selectFile();"/>
-
-                        <input type="submit" hidden />
+                    <form id="streaming" class="icon" method="post" action="index.php">
+                        <input type="search" name="fileSearch" placeholder="     Source sonore"/>
+                        <input type="submit" hidden/>
                     </form>
 
-                    <a href="#" class="icon"><img src="img/reload.png" alt="reload"/></a>
+                    <a href="javascript:selectFile()" class="icon"><img src="img/folder.png" alt="browse"/></a>
                 </aside>
                 <aside class="right">
                     <a href="#"><p class="address"><?php echo $address ?> </p></a>
