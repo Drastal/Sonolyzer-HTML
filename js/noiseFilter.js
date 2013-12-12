@@ -11,12 +11,14 @@
 
 //------------------------Bruit GSM
 var GSMFilter;
+function setUpGSMFilter()
+{
 GSMFilter = context.createBiquadFilter();
     GSMFilter.type = GSMFilter.PEAKING;  // dans ce cas un PEAKING filter
     GSMFilter.frequency.value = 240.0; 
     GSMFilter.Q = 0.8; //compris entre 0.0001 et 1000 (Q=f0/deltaf)
-    GSMFilter.gain.value = 40; //compris entre -40 et 40
-
+    GSMFilter.gain.value = 0; //compris entre -40 et 40
+}
 //--------------------fonction case GSM cochée------------------------
 function noise_activeGSM_checked(){
     //get the checkbox
@@ -24,16 +26,12 @@ function noise_activeGSM_checked(){
     
     // case gains cochée 
     if(noiseGSM.checked === true){              
-         console.log("Filtre GSM activé");  // intensifier activé
-         sourceNode.connect(GSMFilter);
-         GSMFilter.connect(analyser);
-         GSMFilter.connect(context.destination);           
+         GSMFilter.gain.value=-30;
+           
     }else{ //case gain décochée                                           
           console.log("Filtre GSM desactivé");  // ou diminuer desactivé
-          sourceNode.disconnect(GSMFilter);    
-          GSMFilter.disconnect(analyser);
-          GSMFilter.disconnect(context.destination); 
-          sourceNode.connect(analyser);
-          sourceNode.connect(context.destination);
+        
+			GSMFilter.gain.value=0;
+		
              }  
      }    
