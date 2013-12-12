@@ -10,7 +10,7 @@ function getHistory() {
     } else if (isset($_FILES["file"]["name"])) {
         updateHistory("upload/" . $_FILES["file"]["name"]);
     }
-    //Troncature de l'historique à la bonne longueur
+    //Troncature de l'historique a la bonne longueur
     truncateHistory();
 
     $lines = file('txt/fileList.txt');
@@ -37,16 +37,16 @@ function truncateHistory() {
 //Compteur de lignes
     $cpt = 0;
 //Nombre d'entrees souhaite
-    $history = 3;
+    $history = 5;
 //Nouvelle longueur du fichier (nombre de caracteres)
     $new_length = 0;
 
 //Tant que l'on n'a pas atteint la fin du fichier ou tant que l'on n'a pas
 //atteint le nombre d'entrees voulu
     while (!feof($file) && $cpt < $history) {
-//On ajoute la longueur de la ligne au compteur de caractères
+//On ajoute la longueur de la ligne au compteur de caracteres
         $new_length = $new_length + strlen(fgets($file));
-//On passe à la ligne suivante
+//On passe a la ligne suivante
         $cpt++;
     }
 

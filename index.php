@@ -282,8 +282,7 @@ include('php/historyManager.php');
 
                         <audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
                             <source type="audio/mpeg" <?php echo "src = " . $sound ?>>
-                        <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
-                        <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+
 
                         </audio>
                     </section>
@@ -341,7 +340,7 @@ include('php/historyManager.php');
         <!-- Equalizer-->
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <!-- Sélection de fichiers-->
+        <!-- Selection de fichiers-->
         <script type="text/javascript" src="js/fileSelection.js"></script>
 
     </body>
