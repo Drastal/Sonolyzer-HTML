@@ -1,3 +1,8 @@
+<?php
+include('php/iceCastFileLoad.php');
+include('php/fileLoad.php');
+include('php/historyManager.php');
+?>
 <!doctype html>
 <html>
     <head>
@@ -8,19 +13,19 @@
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen"> 
         <link href="css/player.css" rel="stylesheet" media="screen">
-        
+
     </head>
     <body>
         <header>
             <div class="appName">
-                <h1><a href="index.html"> Sonolyzer </a></h1>
+                <h1><a href="index.php"> Sonolyzer </a></h1>
             </div>
-            
+
             <a href="#help" class="icon"><img src="img/help.png" /></a>
             <div id="help" class="modal">
                 <div class="popup">
                     <div class="header">
-                            <h2>Aide</h2>
+                        <h2>Aide</h2>
                     </div>
                     <div class="content">
                         <h3>&Agrave; propos</h3>
@@ -40,7 +45,7 @@
                 </div>
                 <div class="overlay"></div>
             </div>
-            
+
             <a href="#settings" class="icon"><img src="img/settings.png" /></a>
             <div id="settings" class="modal">
                 <div class="popup">
@@ -61,27 +66,39 @@
             </div>
         </header>
 
-		<div class="main">
+        <div class="main">
             <div class="fileManagerBand">
                 <aside class="left">
-                    <form id="searchFile" class="icon">
-                        <input type="search" placeholder="     Source sonore">
+                    <form action="index.php" method="post" enctype="multipart/form-data">
+
+                        <input type="file" name="file" id="file" hidden>
+                        <input type="submit" />
                     </form>
+                    <form id="selectFile" class="icon" method="post" action="index.php" >
+                    
+                        <input type="search" name="fileSearch" placeholder="     Source sonore" ondblclick="selectFile();"/>
+
+                        <input type="submit" hidden />
+                    </form>
+
                     <a href="#" class="icon"><img src="img/reload.png" /></a>
                 </aside>
                 <aside class="right">
-                    <a href="#"><p class="address">Test d'adresse</p></a>
+                    <a href="#"><p class="address"><?php echo $address ?> </p></a>
+                    <ul>
+                        <?php getHistory() ?>
+                    </ul>
                 </aside>
             </div>
 
-			<div class="panels">
+            <div class="panels">
                 <aside class="left">
                     <section class="filters">
                         <div class="filterType">
                             <h3 class="filterTitle">Voix</h3>
                             <div class="doubleFilter">
-                            	<span class="choiceLeft">
-                                	Intensifier
+                                <span class="choiceLeft">
+                                    Intensifier
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
@@ -93,7 +110,7 @@
                                     </div>
                                 </span>
                                 <span class="choiceRight">
-                                	R&eacute;duire
+                                    R&eacute;duire
                                 </span>
                                 <span class="activeFilter">
                                     <input type="checkbox" value="None" id="activeLevel" name="activeVoice" onchange="voice_filter()"/>
@@ -101,8 +118,8 @@
                                 </span>
                             </div>
                             <div class="doubleFilter">
-                            	<span class="choiceLeft">
-                                	Aigues
+                                <span class="choiceLeft">
+                                    Aigues
                                 </span>
                                 <span class="switchTwin">
                                     <div class="switch">
@@ -114,7 +131,7 @@
                                     </div>
                                 </span>
                                 <span class="choiceRight">
-                                	Graves
+                                    Graves
                                 </span>
                                 <span class="activeFilter">
                                     <input type="checkbox" value="None" id="activeType" name="activeVoice" onchange="voice_filter()" />
@@ -125,8 +142,8 @@
                         <div class="filterNoise">
                             <h3 class="filterTitle">R&eacute;duction de bruit</h3>
                             <div class="singleFilter">
-                            	<span class="label">
-                                	Interf&eacute;rences GSM
+                                <span class="label">
+                                    Interf&eacute;rences GSM
                                 </span>
                                 <span class="checkBox">
                                     <span class="activeFilter">
@@ -135,7 +152,7 @@
                                     </span>
                                 </span>
                             </div>
-                            
+
                         </div>
                         <div class="filterType">
                             <h3 class="filterTitle">Personnalis&eacute;s</h3>
@@ -156,7 +173,9 @@
                                     Passe-bas
                                 </span>
                                 <span class="activeFilter">
+
                                     <input type="checkbox" value="None" id="activePass" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
+
                                     <label for="activePass"></label>
                                 </span>
                             </div>
@@ -166,9 +185,9 @@
                                     <input type="range" class="horizon" id="rangePass" name="rangePass" value="50" min="20" max="3000" step="10" onchange="filtre_perso()">
 
                                     <span class="smallerToRight">
-                                    	f<sub>C</sub> = 
+                                        f<sub>C</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangePass">?</output>
+                                            <output name="amount" for="rangePass">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -191,7 +210,11 @@
                                     Coupe-bande
                                 </span>
                                 <span class="activeFilter">
+<<<<<<< HEAD:index.php
+                                    <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this, 'activePerso')" />
+=======
                                     <input type="checkbox" value="None" id="activeBand" name="activePerso" onChange="checkboxMax1(this,'activePerso'), filtre_perso()" />
+>>>>>>> master:index.html
                                     <label for="activeBand"></label>
                                 </span>
                             </div>
@@ -199,9 +222,9 @@
                                 <form oninput="amount.value=rangeLowBand.value">
                                     <input type="range" class="horizon" id="rangeLowBand" name="rangeLowBand" value="50" min="20" max="5000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
-                                    	f<sub>Cb</sub> = 
+                                        f<sub>Cb</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangeLowBand">?</output>
+                                            <output name="amount" for="rangeLowBand">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -211,9 +234,9 @@
                                 <form oninput="amount.value=rangeHighBand.value">
                                     <input type="range" class="horizon" id="rangeHighBand" name="rangeHighBand" value="50" min="20" max="5000" step="10" onchange="filtre_perso()">
                                     <span class="smallerToRight">
-                                    	f<sub>Ch</sub> = 
+                                        f<sub>Ch</sub> = 
                                         <div class="output">
-                                        	<output name="amount" for="rangeHighBand">?</output>
+                                            <output name="amount" for="rangeHighBand">?</output>
                                         </div>
                                         kHz
                                     </span>
@@ -223,11 +246,11 @@
                     </section>
                     <section class="export">
                         <a href="#"><p>
-                            EXPORT
-                        </p></a>
+                                EXPORT
+                            </p></a>
                     </section>
                 </aside>
-                
+
                 <aside class="right">
                     <section class="player">
                         <span class="controls">
@@ -258,14 +281,30 @@
                             <br />
                             <label id="totalTime"></label>
                         </span>
+<<<<<<< HEAD:index.php
+                        <audio id="song" ontimeupdate="updateTime()" preload="auto" loop>
+                            <source type="audio/mpeg" <?php echo "src = " . $sound ?>>
+                        <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
+                        <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+=======
                     	<audio id="song" preload="auto" loop>
                         	<source type="audio/mpeg" src="sounds/file_gsm.wav">
                             <!--<source type="audio/mpeg" src="http://streaming.radio.rtl.fr/rtl-1-44-96">-->
                             <!--<source type="audio/mpeg" src="http://broadcast.infomaniak.net:80/alouette-high.mp3">-->
+>>>>>>> master:index.html
                         </audio>
                     </section>
-                    
+
                     <section class="spectrum">      
+<<<<<<< HEAD:index.php
+                        <canvas id="canvas" width="1000" height="325" style="display: block;margin-right: auto; margin-left: auto;">Spectre du signal audio</canvas>		
+                    </section>
+
+                    <section class="platine">
+                        <p>
+                            Platine
+                        </p>
+=======
 						<canvas id="canvas">Spectre du signal audio</canvas>
                     </section>
                     
@@ -284,16 +323,41 @@
                             <input type="range" class="vertical" id="gain10" name="gain10" value="50" min="0" max="100" step="1" onChange="changeFilterGain(9,this.value)">
                             <input type="range" class="vertical" id="gain11" name="gain11" value="50" min="0" max="100" step="1" onChange="changeFilterGain(10,this.value)">
                         </div>
+>>>>>>> master:index.html
                     </section>
                 </aside>
             </div>
-		</div>
+        </div>
 
-		<footer>
-			<!-- Contenu du footer -->
-		</footer>
-        
+        <footer>
+            <!-- Contenu du footer -->
+        </footer>
+
         <!-- Scripts JavaScript -->
+<<<<<<< HEAD:index.php
+        <!-- Filtres de la voix-->
+        <script type="text/javascript" src="js/voiceFilter.js"></script>
+        <script type="text/javascript" src="js/voiceFilterCheckControl.js"></script>
+
+        <script type="text/javascript" src="js/checkboxChecker.js"></script>
+        <script type="text/javascript" src="js/playerControls.js"></script>
+        <script type="text/javascript" src="js/setAudioNode.js"></script>
+
+
+
+        <!-- Filtres du bruit-->
+        <script type="text/javascript" src="js/noiseFilter.js"></script>
+
+        <!-- Spectre-->
+        <script type="text/javascript" src="js/spectrum.js"></script>
+
+        <!-- Filtres Persos-->
+        <script type="text/javascript" src="js/filtrespersos.js"></script>
+
+        <!-- Sélection de fichiers-->
+        <script type="text/javascript" src="js/fileSelection.js"></script>
+    </body>
+=======
 		<script src="js/equalizer.js"></script>
 		<script src="js/equalizerSetUp.js"></script>
          <!-- Filtres de la voix-->
@@ -319,4 +383,5 @@
 		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		
 	</body>
+>>>>>>> master:index.html
 </html>
