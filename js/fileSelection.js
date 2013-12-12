@@ -6,6 +6,7 @@ function selectFile() {
 }
 
 function submitFile(){
+	alert("ok");
 	document.getElementById("validate").click();
 }
 	
