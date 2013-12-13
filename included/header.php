@@ -8,6 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>Sonolyzer</title>
+        <link rel="icon" type="image/png" href="img/favicon.png">
         <link href="css/reset.css" rel="stylesheet" media="screen">
         <link href="css/template.css" rel="stylesheet" media="screen">
         <link href="css/components.css" rel="stylesheet" media="screen">
