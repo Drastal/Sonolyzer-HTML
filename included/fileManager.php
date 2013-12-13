@@ -12,9 +12,12 @@
         <a href="javascript:selectFile()" class="icon"><img src="img/folder.png" alt="browse"/></a>
     </aside>
     <aside class="right">
-        <a href="#"><p class="address"><?php echo $address ?> </p></a>
-        <ul>
-            <?php getHistory() ?>
+    	<ul class="history">
+            <li><a href="#"><p class="address"><?php echo $address ?> </p></a>
+                <ul>
+                    <?php getHistory() ?>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

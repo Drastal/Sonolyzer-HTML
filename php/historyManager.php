@@ -1,7 +1,7 @@
 <?php
 
 //Les utilisateurs ont tous les droits sur le fichier
-chmod('txt/fileList.txt', 0777);
+chmod('upload/fileList.txt', 0777);
 
 //Fonction qui permet de recuperer l'historique des fichiers charges
 function getHistory() {
@@ -13,7 +13,7 @@ function getHistory() {
     //Troncature de l'historique a la bonne longueur
     truncateHistory();
 
-    $lines = file('txt/fileList.txt');
+    $lines = file('upload/fileList.txt');
 
     //Affichage de chaque ligne du fichier
     foreach ($lines as $line) {
@@ -22,18 +22,18 @@ function getHistory() {
 }
 
 function updateHistory($new_entry) {
-    $file = fopen('txt/fileList.txt', 'r+') or exit("Unable to open file!");
-    $oldContents = file_get_contents('txt/fileList.txt');
+    $file = fopen('upload/fileList.txt', 'r+') or exit("Ouverture du fichier impossible");
+    $oldContents = file_get_contents('upload/fileList.txt');
 
     $newmsg = $new_entry . "\n" . $oldContents;
-    file_put_contents('txt/fileList.txt', $newmsg);
+    file_put_contents('upload/fileList.txt', $newmsg);
     fclose($file);
 }
 
 //Fonction qui permet de tronquer l'historique au nombre d'entrees voulu
 function truncateHistory() {
 
-    $file = fopen('txt/fileList.txt', 'r+') or exit("Unable to open file!");
+    $file = fopen('upload/fileList.txt', 'r+') or exit("Ouverture du fichier impossible");
 //Compteur de lignes
     $cpt = 0;
 //Nombre d'entrees souhaite
