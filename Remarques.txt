@@ -2,7 +2,4 @@ A modifier :
 
 Platine => mettre les bande de fréquences qui correspondent en bas de chaque curseur
 
-Filtres => Faire un bouton de remise à 0 de tous les filtres
-	=> faire des filtres cohérents
-
 Spectre => essayer de l'arranger

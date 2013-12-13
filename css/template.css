@@ -238,3 +238,66 @@ div.output {
 	vertical-align:middle;
 	display:inline-block;
 }
+
+/* Affichage historique chargement */
+ul.history, ul.history ul {
+	width:100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.history:before, ul.history:after {
+	content: "";
+	display: table;
+}
+
+ul.history:after {
+	clear: both;
+}
+
+ul.history {
+	zoom:1;
+}
+
+ul.history li {
+	float: left;
+	position: relative;
+	width:100%;
+}
+
+ul.history ul {
+	margin: 20px 0 0 0;
+	width:100%;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	z-index: 1;    
+	background: black;
+	transition: all .2s ease-in-out;  
+}
+
+ul.history li:hover > ul {
+	opacity: 1;
+	visibility: visible;
+	margin: 0;
+}
+
+ul.history ul ul {
+	top: 0;
+	left: 150px;
+	margin: 0 0 0 20px;	
+}
+
+ul.history ul li {
+	float: none;
+	display: block;
+	border: 0;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	padding-left:20px;
+	border-top:1px solid #CCC;
+}

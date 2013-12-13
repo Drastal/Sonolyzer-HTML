@@ -14,7 +14,6 @@
         <link href="css/components.css" rel="stylesheet" media="screen">
         <link href="css/modals.css" rel="stylesheet" media="screen"> 
         <link href="css/player.css" rel="stylesheet" media="screen">
-
     </head>
     
     <body>
