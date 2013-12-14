@@ -44,12 +44,22 @@ var rangeMultiSup = document.getElementById("rangeHighBand");//2ème fréquence
         if(typeMono.checked == false){ //passe-haut
 		    tabSpecificFilters[0].type=tabSpecificFilters[0].HIGHPASS;
             tabSpecificFilters[0].frequency.value = rangeMono.value;
+			tabSpecificFilters[1].type=tabSpecificFilters[1].LOWSHELF;
+			tabSpecificFilters[1].gain = 0;
+			
+            tabSpecificFilters[1].frequency.value = 0;
+            tabSpecificFilters[1].Q = 0.0001;
 			
 
         }
         else{ //passe-bas
 			tabSpecificFilters[1].type=tabSpecificFilters[1].LOWPASS;
             tabSpecificFilters[1].frequency.value = rangeMono.value;
+			
+            tabSpecificFilters[0].frequency.value = 0;
+            tabSpecificFilters[0].Q = 0.0001;
+			tabSpecificFilters[0].type=tabSpecificFilters[0].LOWSHELF;
+			tabSpecificFilters[0].gain = 0;
         
         }
     }
@@ -58,7 +68,9 @@ var rangeMultiSup = document.getElementById("rangeHighBand");//2ème fréquence
 			
             tabSpecificFilters[0].frequency.value = 0;
             tabSpecificFilters[0].Q = 0.0001;
-			tabSpecificFilters[1].type=tabSpecificFilters[0].LOWSHELF;
+			tabSpecificFilters[0].type=tabSpecificFilters[0].LOWSHELF;
+			tabSpecificFilters[0].gain = 0;
+			tabSpecificFilters[1].type=tabSpecificFilters[1].LOWSHELF;
 			tabSpecificFilters[1].gain = 0;
 			
             tabSpecificFilters[1].frequency.value = 0;
