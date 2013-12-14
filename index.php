@@ -5,7 +5,7 @@
 	<div class="panels">
 		<aside class="left">
 			<?php include('included/filters.php');?>
-			<?php include('included/export.php');?>
+			<?php //include('included/export.php');?>
 		</aside>
 
 		<aside class="right">
