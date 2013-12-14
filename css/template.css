@@ -167,6 +167,7 @@ section.spectrum {
 
 section.platine {
 	height:120px;
+	position:relative;
 }
 
 section.frequencyChannels {
@@ -260,6 +261,22 @@ p.firstFrequency {
 	margin-left:35px;
 	width:32px;
 	text-align:center;
+}
+
+div.gainChannels {
+	display:inline-block;
+	position:absolute;
+	left:0px;
+	font-size:12px;
+	width:30px;
+	height:100%;
+	color:#CCC;
+	text-align:right;
+	padding:10px;
+}
+
+p.gain {
+	margin-bottom:30px;
 }
 
 /* Affichage de la frequence en plus petit */

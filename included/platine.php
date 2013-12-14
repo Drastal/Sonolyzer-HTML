@@ -1,4 +1,15 @@
 <section class="platine">
+	<div class="gainChannels">
+    	<p class="gain">
+        	+40dB
+        </p>
+    	<p class="gain">
+        	0dB
+        </p>
+    	<p class="gain">
+        	-40dB
+        </p>
+    </div>
     <a href="javascript:setAllSliderOff()" class="icon"><img src="img/reset.png" alt="reset"/></a>
     <div class="gainRange">
         <input type="range" class="vertical" id="gain1" name="gain1" value="50" min="0" max="100" step="1" onChange="changeFilterGain(0, this.value);">
