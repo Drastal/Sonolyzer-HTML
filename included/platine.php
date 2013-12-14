@@ -14,3 +14,39 @@
         <input type="range" class="vertical" id="gain11" name="gain11" value="50" min="0" max="100" step="1" onChange="changeFilterGain(10, this.value);">
     </div>
 </section>
+
+<section class="frequencyChannels">
+    <p class="firstFrequency">
+        16Hz
+    </p>
+    <p class="frequency">
+        32Hz
+    </p>
+    <p class="frequency">
+        64Hz
+    </p>
+    <p class="frequency">
+        125Hz
+    </p>
+    <p class="frequency">
+        250Hz
+    </p>
+    <p class="frequency">
+        500Hz
+    </p>
+    <p class="frequency">
+        1000Hz
+    </p>
+    <p class="frequency">
+        2000Hz
+    </p>
+    <p class="frequency">
+        4000Hz
+    </p>
+    <p class="frequency">
+        8000Hz
+    </p>
+    <p class="frequency">
+        16000Hz
+    </p>
+</section>

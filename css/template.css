@@ -169,6 +169,15 @@ section.platine {
 	height:120px;
 }
 
+section.frequencyChannels {
+	margin-top:0px;
+	width:100%;
+	height:15px;
+	font-size:10px;
+	color:#CCC;
+	text-align:left;
+}
+
 section.spectrum canvas {
 	display:block;
 }
@@ -237,6 +246,20 @@ div.frequencyRange {
 	vertical-align:middle;
 	display:inline-block;
 	margin-bottom:10px;
+}
+
+p.frequency {
+	display:inline-block;
+	margin-left:20px;
+	width:32px;
+	text-align:center;
+}
+
+p.firstFrequency {
+	display:inline-block;
+	margin-left:35px;
+	width:32px;
+	text-align:center;
 }
 
 /* Affichage de la frequence en plus petit */

@@ -94,7 +94,7 @@
                     <div class="output">
                         <output name="amount" for="rangePass">?</output>
                     </div>
-                    kHz
+                    Hz
                 </span>
             </form>
         </div>
@@ -129,7 +129,7 @@
                     <div class="output">
                         <output name="amount" for="rangeLowBand">?</output>
                     </div>
-                    kHz
+                    Hz
                 </span>
             </form>
         </div>
@@ -141,7 +141,7 @@
                     <div class="output">
                         <output name="amount" for="rangeHighBand">?</output>
                     </div>
-                    kHz
+                    Hz
                 </span>
             </form>
         </div>
