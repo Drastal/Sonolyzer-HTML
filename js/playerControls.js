@@ -34,13 +34,13 @@ function playPause(id) {
         sec2 = sec2 % 3600;
         var min2 = Math.floor(sec2 / 60);
         sec2 = Math.floor(sec2 % 60);
-        if (sec2.toString().length < 2){
+        if (sec2.toString().length < 2) {
             sec2 = "0" + sec2;
         }
-        if (min2.toString().length < 2){
+        if (min2.toString().length < 2) {
             min2 = "0" + min2;
         }
-    document.getElementById('totalTime').innerHTML = min2 + ":" + sec2;
+        document.getElementById('totalTime').innerHTML = min2 + ":" + sec2;
     } else {
         document.getElementById('totalTime').innerHTML = "";
     }
@@ -83,10 +83,10 @@ function UpdateTheTime() {
     sec = sec % 3600;
     var min = Math.floor(sec / 60);
     sec = Math.floor(sec % 60);
-    if (sec.toString().length < 2){
+    if (sec.toString().length < 2) {
         sec = "0" + sec;
     }
-    if (min.toString().length < 2){
+    if (min.toString().length < 2) {
         min = "0" + min;
     }
     document.getElementById('currentTime').innerHTML = min + ":" + sec;

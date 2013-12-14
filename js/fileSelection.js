@@ -7,6 +7,3 @@ function selectFile() {
 function submitFile() {
     document.getElementById("validate").click();
 }
-
-
-

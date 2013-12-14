@@ -1,42 +1,43 @@
 // JavaScript Document
 
-//récupérer le contexte du canvas où l'on va tracer le spectre
+//recuperer le contexte du canvas ou l'on va tracer le spectre
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 
-// create a gradient for the fill. Note the strange
-// offset, since the gradient is calculated based on
-// the canvas, not the specific element we draw
+// creation du gradient pour le remplissage
+// le gradient est calcule sur le canvas
+// pas l'element specifique dessine
 var gradient = ctx.createLinearGradient(0, 0, 0, 300);
 gradient.addColorStop(1, '#00ff88');
 gradient.addColorStop(0.5, '#00bfff');
 gradient.addColorStop(0, '#8800ff');
 
-// log if an error occurs
+// log en cas d'erreur
 function onError(e) {
     console.log(e);
 }
 
-// when the javascript node is called
-// we use information from the analyzer node
-// to draw the volume
+//Quand le noeud javascript est appele
+//utilisation de l'information du noeud analyseur
+//pour dessiner le volume
 javascriptNode.onaudioprocess = function() {
 
     // get the average for the first channel
     var array = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(array);
 
-    // resize the canvas to fill browser window dynamically
+    //redimensionnement du canvas pour remplir dynamiquement
+    //la fenetre du navigateur
     window.addEventListener('resize', resizeCanvas, false);
     resizeCanvas(array);
 };
 
 //tableau des valeurs du spectre
 function drawSpectrum(array) {
-    // clear the current state
+    // effacement de l'etat actuel
     ctx.clearRect(0, 0, document.getElementById("canvas").width, 300);
 
-    // set the fill style
+    // style de remplissage
     ctx.fillStyle = gradient;
 
     var y = 0;
@@ -46,7 +47,6 @@ function drawSpectrum(array) {
         var value = array[Math.floor(Math.exp(i))];
         y = y + 10;
         i = i + 0.07;
-
         ctx.fillRect(y, (300 - value), 9, 300);
     }
 }

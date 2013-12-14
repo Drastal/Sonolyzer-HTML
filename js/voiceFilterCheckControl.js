@@ -2,19 +2,17 @@
 
 // Initialisation des valeurs des checkbox pour le module filtre voix
 
-//gain activé, non activé
+//gain activé, non active
 var activeLevel = document.getElementById("activeLevel");
 var checkActiveLevel = activeLevel.checked;
 
-//passe bande activé, non activé
+//passe bande activé, non active
 var activeType = document.getElementById("activeType");
 var checkActiveType = activeType.checked;
-
 
 //intensifier, diminuer
 var voiceLevel = document.getElementById("voiceLevel");
 var checkVoiceLevel = voiceLevel.checked;
-
 
 //voix grave, voix aigue
 var voiceType = document.getElementById("voiceType");
@@ -30,8 +28,8 @@ function voiceFilter_check_control() {
 
 }
 
-//Contrôle du changement des checkboxs
-//contrôle de la checkBox Gain
+//Controle du changement des checkboxs
+//controle de la checkBox Gain
 function activeLevel_check_control() {
     if (checkActiveLevel != activeLevel.checked) {
         checkActiveLevel = activeLevel.checked;
