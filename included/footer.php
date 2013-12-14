@@ -10,12 +10,15 @@
                     <div class="content">
                     	<h3>Informations &eacute;diteurs</h3>
                     	<p>Le projet Sonolyzer a &eacute;t&eacute; r&eacute;alis&eacute; dans le cadre d'un projet de six &eacute;tudiants de l'EPF en option Management des Systemes d'information. L'&eacute;quipe est compos&eacute;e de : </p>
-                        <li>Eric BERNELIN</li>
-                        <li>Raphael BIZOS</li>
-                        <li>Emilie DURAND</li>
-                        <li>Julia FAUVEL</li>
-                        <li>Roxanne RICCI</li>
-                        <li>Florian LEROY</li>
+                        <ul>
+							<li>Eric BERNELIN</li>
+							<li>Raphael BIZOS</li>
+							<li>Emilie DURAND</li>
+							<li>Julia FAUVEL</li>
+							<li>Roxanne RICCI</li>
+							<li>Florian LEROY</li>
+						</ul>
+						
                         <br /><br />
                     	<h3>Mentions l&eacute;gales</h3>
                 		<p>

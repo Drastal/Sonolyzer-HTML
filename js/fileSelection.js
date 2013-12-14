@@ -2,12 +2,11 @@
 
 function selectFile() {
     document.getElementById("file").click();
-
 }
 
-function submitFile(){
-	document.getElementById("validate").click();
+function submitFile() {
+    document.getElementById("validate").click();
 }
-	
+
 
 

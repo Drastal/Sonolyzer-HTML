@@ -47,9 +47,12 @@
                         <h3>Filtres</h3>
                         <p>
                         	Les filtres applicables à votre bande sonore se trouvent sur le bandeau lat&eacute;rale gauche de Sonolyzer. Vous avez la possibilit&eacute; de :
-                            <li>Travailler sur la voix</li>
-                            <li>R&eacute;duire les bruits</li>
-                            <li>Personnaliser les filtres selon les fr&eacute;quences que vous d&eacute;sirez </li>
+                            <ul>
+								<li>Travailler sur la voix</li>
+								<li>R&eacute;duire les bruits</li>
+								<li>Personnaliser les filtres selon les fr&eacute;quences que vous d&eacute;sirez </li>
+							</ul>
+							
                             <br />
                             Afin d'activer les filtres, cochez la case bleue et faites glisser le curseur &agrave; droite ou &agrave; gauche suivant le type de filtre que vous d&eacute;sirez.
                         </p>
