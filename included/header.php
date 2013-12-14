@@ -30,15 +30,30 @@
                     </div>
                     <div class="content">
                         <h3>&Agrave; propos</h3>
-                        <p>Va falloir une fine plume les gens</p>
+                        <p>
+                        	Le projet Sonolyzer a &eacute;t&eacute; r&eacute;alis&eacute; dans le cadre d'un projet d'&eacute;tudiant EPF en option Management des Syst&egrave;mes d'information. <br/>Conçu et r&eacute;alis&eacute; au sein d'un syst&egrave;me exploitation libre, Sonolyzer est &agrave; la fois capable de travailler sur un flux audio de format MP3 import&eacute; d'un serveur IceCast et depuis un fichier local.
+                        </p>
+                        
                         <h3>Charger une bande sonore</h3>
-                        <p>Ici aussi, de toute évidence</p>
+                        <p>
+                        	Afin de charger votre flux audio, vous avez deux possibilit&eacute;s : <\br> Flux IceCast : Passez votre curseur sur la loupe qui se trouve &agrave; gauche dans le bandeau bleu horizontal. Entrez ensuite le nom de votre flux audio. <\br> Flux en local : Cliquez sur "l'icone dossier", une fen&ecirc;tre s'ouvre et vous pouvez ainsi s&eacute;lectionner le nom de votre fichier audio.
+                        </p>
+                        
                         <h3>Lecteur audio</h3>
-                        <p>Vous connaissez la chanson</p>
+                        <p>
+                        	Le lecteur audio poss&egrave;de une interface graphique permettant de lire des fichiers audio. Il vous suffit de cliquer sur les icones d'arr&ecirc;t, de marche ou de pause pour effectuer les actions correspondantes.
+                        </p>
+                        
                         <h3>Filtres</h3>
-                        <p>On r'met &ccedil;a ?</p>
-                        <h3>Export</h3>
-                        <p>Une autre patron</p>
+                        <p>
+                        	Les filtres applicables à votre bande sonore se trouvent sur le bandeau lat&eacute;rale gauche de Sonolyzer. Vous avez la possibilit&eacute; de :
+                            <li>Travailler sur la voix</li>
+                            <li>R&eacute;duire les bruits</li>
+                            <li>Personnaliser les filtres selon les fr&eacute;quences que vous d&eacute;sirez </li>
+                            <br />
+                            Afin d'activer les filtres, cochez la case bleue et faites glisser le curseur &agrave; droite ou &agrave; gauche suivant le type de filtre que vous d&eacute;sirez.
+                        </p>
+                        
                     </div>
                     <div class="footer">
                         <a href="#" class="closeButton">Fermer</a>
@@ -47,7 +62,7 @@
                 <div class="overlay"></div>
             </div>
 
-            <a href="#settings" class="icon"><img src="img/settings.png" alt="settings" /></a>
+            <!--<a href="#settings" class="icon"><img src="img/settings.png" alt="settings" /></a>
             <div id="settings" class="modal">
                 <div class="popup">
                     <div class="header">
@@ -64,5 +79,5 @@
                     </div>
                 </div>
                 <div class="overlay"></div>
-            </div>
+            </div>-->
         </header>
