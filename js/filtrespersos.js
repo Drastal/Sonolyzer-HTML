@@ -86,22 +86,25 @@ function filtre_perso() {
             //passe-bande activee
             tabSpecificFilters[2].type = tabSpecificFilters[2].BANDPASS;
             tabSpecificFilters[2].frequency.value = (parseInt(rangeMultiInf.value) + parseInt(rangeMultiSup.value)) / 2;
-            tabSpecificFilters[2].Q = tabSpecificFilters[2].frequency.value / Math.abs(parseInt(rangeMultiSup.value) - parseInt(rangeMultiSup.value));
+            tabSpecificFilters[2].Q.value = tabSpecificFilters[2].frequency.value / Math.abs(parseFloat(rangeMultiSup.value) - parseFloat(rangeMultiInf.value));
             //desactivation du coupe bande
             tabSpecificFilters[3].type = tabSpecificFilters[3].LOWSHELF;
             tabSpecificFilters[3].frequency.value = 0;
-            tabSpecificFilters[3].Q = 0;
+            tabSpecificFilters[3].Q.value = 0;
             tabSpecificFilters[3].gain = 0;
+			
         } else {
             //coupe-bande activee
             tabSpecificFilters[3].type = tabSpecificFilters[3].NOTCH;
             tabSpecificFilters[3].frequency.value = (parseInt(rangeMultiInf.value) + parseInt(rangeMultiSup.value)) / 2;
-            tabSpecificFilters[3].Q = tabSpecificFilters[3].frequency.value / Math.abs(parseInt(rangeMultiSup.value) - parseInt(rangeMultiSup.value));
+            tabSpecificFilters[3].Q.value = tabSpecificFilters[3].frequency.value / Math.abs(parseFloat(rangeMultiSup.value) - parseFloat(rangeMultiInf.value));
             //desactivation du passe bande
             tabSpecificFilters[2].type = tabSpecificFilters[2].LOWSHELF;
             tabSpecificFilters[2].frequency.value = 1510;
-            tabSpecificFilters[2].Q = 0;
+            tabSpecificFilters[2].Q.value = 0;
             tabSpecificFilters[2].gain = 0;
+			
+
         }
     }
     else {
@@ -110,11 +113,11 @@ function filtre_perso() {
 
         tabSpecificFilters[2].type = tabSpecificFilters[2].LOWSHELF;
         tabSpecificFilters[2].frequency.value = 1510;
-        tabSpecificFilters[2].Q = 0;
+        tabSpecificFilters[2].Q.value = 0;
         tabSpecificFilters[2].gain = 0;
         tabSpecificFilters[3].type = tabSpecificFilters[3].LOWSHELF;
         tabSpecificFilters[3].frequency.value = 0;
-        tabSpecificFilters[3].Q = 0;
+        tabSpecificFilters[3].Q.value = 0;
         tabSpecificFilters[3].gain = 0;
 
     }
