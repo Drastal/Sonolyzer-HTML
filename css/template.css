@@ -357,3 +357,7 @@ ul.history ul li {
 	padding-left:20px;
 	border-top:1px solid #CCC;
 }
+
+ul.toRight {
+	margin-left: 20px;
+}

@@ -10,7 +10,7 @@
                     <div class="content">
                     	<h3>Informations &eacute;diteurs</h3>
                     	<p>Le projet Sonolyzer a &eacute;t&eacute; r&eacute;alis&eacute; dans le cadre d'un projet de six &eacute;tudiants de l'EPF en option Management des Systemes d'information. L'&eacute;quipe est compos&eacute;e de : </p>
-                        <ul>
+                        <ul class="toRight">
 							<li>Eric BERNELIN</li>
 							<li>Raphael BIZOS</li>
 							<li>Emilie DURAND</li>
