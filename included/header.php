@@ -36,7 +36,7 @@
                         
                         <h3>Charger une bande sonore</h3>
                         <p>
-                        	Afin de charger votre flux audio, vous avez deux possibilit&eacute;s : <\br> Flux IceCast : Passez votre curseur sur la loupe qui se trouve &agrave; gauche dans le bandeau bleu horizontal. Entrez ensuite le nom de votre flux audio. <\br> Flux en local : Cliquez sur "l'icone dossier", une fen&ecirc;tre s'ouvre et vous pouvez ainsi s&eacute;lectionner le nom de votre fichier audio.
+                        	Afin de charger votre flux audio, vous avez deux possibilit&eacute;s : <br/> Flux IceCast : Passez votre curseur sur la loupe qui se trouve &agrave; gauche dans le bandeau bleu horizontal. Entrez ensuite le nom de votre flux audio. <br/> Flux en local : Cliquez sur "l'icone dossier", une fen&ecirc;tre s'ouvre et vous pouvez ainsi s&eacute;lectionner le nom de votre fichier audio.
                         </p>
                         
                         <h3>Lecteur audio</h3>
@@ -47,7 +47,7 @@
                         <h3>Filtres</h3>
                         <p>
                         	Les filtres applicables à votre bande sonore se trouvent sur le bandeau lat&eacute;rale gauche de Sonolyzer. Vous avez la possibilit&eacute; de :
-                            <ul>
+                            <ul class="toRight">
 								<li>Travailler sur la voix</li>
 								<li>R&eacute;duire les bruits</li>
 								<li>Personnaliser les filtres selon les fr&eacute;quences que vous d&eacute;sirez </li>
